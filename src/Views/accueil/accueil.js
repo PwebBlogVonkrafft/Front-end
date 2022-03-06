@@ -35,8 +35,6 @@ import Stack from "@mui/material/Stack";
 import img_news from "./image_home_page.png";
 
 
-//const pages = ['Musique'];
-
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -45,6 +43,8 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   maxWidth: 1000,
   color: theme.palette.text.primary,
 }));
+
+
 
 const messageN = `Dernière news`;
 const messageD = `Dernière date`;
@@ -64,12 +64,15 @@ const ExpandMore = styled((props) => {
   })
 }));
 
+
+
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
   maxWidth: '100%',
   maxHeight: '100%',
 });
+
 
 
 function DerniereNewsCard() {
@@ -209,8 +212,6 @@ function VideoGrid() {
 
 
 
-
-
 function Acceuil() {
   return (
     <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}> {/* La propriété CSS overflow est une propriété raccourcie qui définit comment gérer le dépassement du contenu d'un élément dans son bloc.  */}
@@ -265,57 +266,13 @@ function Acceuil() {
 }
 
 
-function HomePage(){
-  return (
+
+function Accueil() {
+  return ( 
     <Box >
       <Acceuil></Acceuil>    
     </Box>
   );
 }
 
-export default HomePage;
-
-
-
-
-
-/*
-function HomePage() {
-  const [notes, setNotes] = useState([]);
-
-  return (
-    <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>1</Paper>
-          <FormRow />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>2</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>3</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>4</Paper>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        {notes.map(note => (
-          <Grid item xs={12} md={6} lg={4} key={note.id}>
-            <Paper>{note.title}</Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
-  );
-}
-*/
-
-/*
-  useEffect(() => {
-    fetch('http://localhost:8000/notes')
-      .then(res => res.json())
-      .then(data => setNotes(data))
-  }, [])
-*/
+export default Accueil;

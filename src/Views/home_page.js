@@ -16,6 +16,8 @@ import InitialFilters from './example/initial_filters';
 import SimpleGrow from './example/simple_grow';
 import SkeletonTest from './example/skeleton_test';
 
+import Accueil from './accueil/accueil.js';
+
 
 
 function HomePage() {
@@ -126,7 +128,7 @@ function HomePage() {
 
             <div>
                 {   //si menu == 0 alors on affiche la fonction "Login"
-                    menu === 0 && <div> <Login/></div>
+                    menu === 0 && <div> <Accueil/></div>
                 }
                 {
                     menu === 1 && <div> <VerticalTabs/> </div>
