@@ -11,7 +11,7 @@ import TodayTwoToneIcon from '@mui/icons-material/TodayTwoTone';
 import OndemandVideoTwoToneIcon from '@mui/icons-material/OndemandVideoTwoTone';
 import LibraryMusicTwoToneIcon from '@mui/icons-material/LibraryMusicTwoTone';
 
-import { deepPurple } from '@mui/material/colors';
+import { deepPurple, grey } from '@mui/material/colors';
 import { palette } from '@mui/system';
 
 import Card from "@mui/material/Card";
@@ -35,7 +35,6 @@ import Stack from "@mui/material/Stack";
 import img_news from "./image_home_page.png";
 
 
-
 const StyledPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -49,7 +48,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 const messageN = `Dernière news`;
 const messageD = `Dernière date`;
 const messageV = `Dernière vidéo`;
-const messageM = `Dernière Musique`;
+const messageM = `Dernière musique`;
 
 
 
@@ -92,23 +91,32 @@ function DerniereNewsCard() {
         backgroundColor: (theme) =>
           theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
       }}>
-      <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon /> {/* Bouton avec les trois petits points */}
-          </IconButton>
-        }
-        title="Je suis trop fort, faut le dire"
-        subheader="Mars 6, 2022"
-      />
-      <Img alt="Image de la news" src={img_news} />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          Scrivo delle cose a caso tanto è giusto una prova per vedere se il
-          testo esce bene oppure no. Io scrivo robe, perchè nell'immagine c'è
-          una banana e quindi posso.
-        </Typography>
-      </CardContent>
+      
+      <Grid container spacing={2}>
+        <Grid item>
+          <ButtonBase sx={{ width: 128, height: 128 }}>
+            <Stack direction="row" spacing={2}>
+              <Img alt="Image de la news" src={img_news} />
+            </Stack>
+          </ButtonBase>
+        </Grid>
+
+        <Grid item xs={12} sm container>
+          <CardHeader
+            title="Je suis trop fort, faut le dire"
+            subheader="Mars 6, 2022"
+          />
+
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              Scrivo delle cose a caso tanto è giusto una prova per vedere se il
+              testo esce bene oppure no. Io scrivo robe, perchè nell'immagine c'è
+              una banana e quindi posso.
+            </Typography>
+          </CardContent>
+        </Grid>
+      </Grid>
+
       <CardActions disableSpacing>
         {" "}
         {/* Mettre l'icone à droite */}
@@ -155,6 +163,62 @@ function DerniereNewsCard() {
 
 
 
+function DateGrid() {
+  return (
+    <Paper
+      sx={{
+        p: 5,
+        margin: 'auto',
+        maxWidth: 750,
+        flexGrow: 1,
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+      }}
+    >
+      <Grid container spacing={2}>
+        <Grid item>
+          <ButtonBase sx={{ width: 128, height: 128 }}>
+          <Stack direction="row" spacing={2}>
+            <Avatar sx={{ width: 120, height: 120, bgcolor: grey[400],}}>6 MARS 2021</Avatar>
+          </Stack>
+          </ButtonBase>
+        </Grid>
+        <Grid item xs={12} sm container>
+          <Grid item xs container direction="column" spacing={2}>
+            <Grid item xs>
+              <Typography gutterBottom variant="subtitle1" component="div">
+                LA PIZZA E' IL MIO PIATTO PREFERITO
+              </Typography>
+              <Typography variant="body2" gutterBottom>
+                6 mars 2022
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                perchè è buona
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography sx={{ cursor: 'pointer'}} color="common.white" variant="body2">
+                <Stack direction="row" spacing={2}>
+                  <Button color="secondary" variant="contained" endIcon={<SendIcon />}>
+                    Accédez au post Facebook
+                  </Button>
+                </Stack>
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle1" component="div">
+              ...
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
+  );
+}
+
+
+
 function VideoGrid() {
   return (
     <Paper
@@ -183,10 +247,67 @@ function VideoGrid() {
                 SOLE - DORIAN VONKRAFFT (MUSIC VIDEO)
               </Typography>
               <Typography variant="body2" gutterBottom>
-                4 giu 2021
+                4 juin 2021
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                609 visualizzazioni
+                609 vues
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography sx={{ cursor: 'pointer'}} color="common.white" variant="body2">
+                <Stack direction="row" spacing={2}>
+                  <Button color="secondary" variant="contained" endIcon={<SendIcon />}>
+                    Écoutez-la maintenant
+                  </Button>
+                </Stack>
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle1" component="div">
+              € 13.00
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
+  );
+}
+
+
+
+function MusiqueGrid() {
+  return (
+    <Paper
+      sx={{
+        p: 5,
+        margin: 'auto',
+        maxWidth: 750,
+        flexGrow: 1,
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+      }}
+    >
+      <Grid container spacing={2}>
+        <Grid item>
+          <ButtonBase sx={{ width: 128, height: 128 }}>
+            <CardMedia
+              component="iframe"
+              image="https://www.youtube.com/embed/2WPYPg-iDrk"
+            />
+          </ButtonBase>
+        </Grid>
+        <Grid item xs={12} sm container>
+          <Grid item xs container direction="column" spacing={2}>
+            <Grid item xs>
+              <Typography gutterBottom variant="subtitle1" component="div">
+                SOLE - DORIAN VONKRAFFT (MUSIC VIDEO)
+              </Typography>
+              <Typography variant="body2" gutterBottom>
+                4 juin 2021
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                609 vues
               </Typography>
             </Grid>
             <Grid item>
@@ -235,6 +356,7 @@ function Acceuil() {
           </Grid>
           <Grid item xs>
             <Typography>{messageD}</Typography>
+            <DateGrid></DateGrid>
           </Grid>
         </Grid>
       </StyledPaper>
@@ -257,7 +379,8 @@ function Acceuil() {
             <Avatar sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><LibraryMusicTwoToneIcon sx={{ width: 45, height: 45 }} ></LibraryMusicTwoToneIcon></Avatar>
           </Grid>
           <Grid item xs>
-          <Typography>{messageV}</Typography>
+          <Typography>{messageM}</Typography>
+          <MusiqueGrid></MusiqueGrid>
           </Grid>
         </Grid>
       </StyledPaper>

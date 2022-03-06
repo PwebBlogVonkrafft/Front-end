@@ -61,7 +61,7 @@ function HomePage() {
         <Container>
         
             <div>
-                <AppBar position="static" sx={{alignItems: 'center'}}>
+                <AppBar color="secondary" position="static" sx={{alignItems: 'center'}}>
                     <Toolbar>
 
                         <div>
