@@ -1,21 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { StyledEngineProvider } from '@mui/material/styles';
-import HomePage from './Views/home_page';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import App from './Views/app';
 
+
+const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <StyledEngineProvider injectFirst>
-    <HomePage />
-  </StyledEngineProvider>,
-  document.getElementById('root')
+    <StrictMode>
+        <App />
+    </StrictMode>,
+    rootElement
 );
 
-
-
-/*
-ReactDOM.render(
-  <React.StrictMode>
-    <HomePage />
-  </React.StrictMode>,
-  document.getElementById("#root")
-);*/
