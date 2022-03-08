@@ -17,6 +17,7 @@ import SimpleGrow from './example/simple_grow';
 import SkeletonTest from './example/skeleton_test';
 
 import Accueil from './accueil/accueil.js';
+import Articles from './articles/articles';
 
 
 
@@ -137,7 +138,7 @@ function HomePage() {
                     menu === 2 && <div> <MediaControlCard/> </div>
                 }
                 {
-                    menu === 3 && <div> <SimpleGrow/> </div>
+                    menu === 3 && <div> <Articles/> </div>
                 }
                 {
                     menu === 4 && <div> <BasicTable/> </div>
