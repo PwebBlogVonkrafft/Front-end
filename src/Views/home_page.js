@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import {
-  Container,
-} from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -17,6 +15,7 @@ import SimpleGrow from './example/simple_grow';
 import SkeletonTest from './example/skeleton_test';
 
 import Accueil from './accueil/accueil.js';
+import Articles from './articles/articles';
 
 
 
@@ -137,7 +136,7 @@ function HomePage() {
                     menu === 2 && <div> <MediaControlCard/> </div>
                 }
                 {
-                    menu === 3 && <div> <SimpleGrow/> </div>
+                    menu === 3 && <div> <Articles/> </div>
                 }
                 {
                     menu === 4 && <div> <BasicTable/> </div>
