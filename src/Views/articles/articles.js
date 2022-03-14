@@ -71,7 +71,7 @@ function IndividualArticle({article}) {
 }
 
 function Articles() {
-  const articleCardList = newsList.map(a => <IndividualArticle article={a} />);
+  const articleCardList = newsList.map(a => <IndividualArticle article={a} />).reverse();
 
   return (
     <Box>
