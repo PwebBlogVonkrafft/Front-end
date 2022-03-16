@@ -1,11 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import HomePage from './Views/home_page';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import App from './Views/app';
 
+
+const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <React.StrictMode>
-    <HomePage />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <StrictMode>
+        <App />
+    </StrictMode>,
+    rootElement
 );
 
