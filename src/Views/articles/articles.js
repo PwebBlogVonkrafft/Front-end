@@ -7,10 +7,16 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
+/*
 import img_rhone from "./IMG_4971.jpeg";
 import img_lac from "./IMG_3602.jpeg";
 import img_neige from "./IMG_4515.jpeg";
+*/
 
+// Import const
+import {newsList} from "../accueil/bdd/data.js";
+
+/*
 const articleList = [
   {
     title: "La Rhône",
@@ -28,6 +34,9 @@ const articleList = [
     image: img_neige
   }
 ]
+*/
+
+
 
 function IndividualArticle({article}) {
   return (
@@ -38,16 +47,16 @@ function IndividualArticle({article}) {
             component="img"
             height="140"
             image={article.image}
-            alt={article.title}
+            alt={article.name}
           />
         </Grid>
         <Grid item>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {article.title}
+              {article.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {article.description}
+              {article.corpus}
             </Typography>
           </CardContent>
         </Grid>
@@ -62,7 +71,7 @@ function IndividualArticle({article}) {
 }
 
 function Articles() {
-  const articleCardList = articleList.map(a => <IndividualArticle article={a} />);
+  const articleCardList = newsList.map(a => <IndividualArticle article={a} />).reverse();
 
   return (
     <Box>
