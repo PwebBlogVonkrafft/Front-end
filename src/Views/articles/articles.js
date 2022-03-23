@@ -4,6 +4,7 @@ import { useState } from "react";
 import Typography from '@mui/material/Typography';
 import ArticleCard from "./ArticleCard";
 import ArticleFocus from "./ArticleFocus";
+import ArticleEditCard from "./ArticleEditCard";
 
 // Import const
 import { newsList } from "../accueil/bdd/data.js";
@@ -44,40 +45,45 @@ function Articles() {
 
   return (
     <StyledBox>
-      <StyledFormControlLabel
-        control={
-          <StyledSwitch
-            color="secondary"
-            checked={edit}
-            onChange={() => setEdit(!edit)}
-          />}
-        label="Modifier"
-      />
-
-      {
-        // VUE D'ENSEMBLE
-        edit == false && focus === -1 &&
-        <Grid container spacing={2}>
-          {articleCardList}
+      <Grid container direction="column" spacing={1}>
+        <Grid item container justifyContent="flex-end">
+          <StyledFormControlLabel
+            control={
+              <StyledSwitch
+                color="secondary"
+                checked={edit}
+                onChange={() => setEdit(!edit)}
+              />}
+            label="Modifier"
+          />
         </Grid>
-      }
 
-      {
-        // VUE FOCUS
-        edit == false && focus !== -1 &&
-        <>
-          <ArticleFocus element={newsList.find(article => article.id === focus)}
-            onClickShow={() => setFocus(-1)} />
-        </>
-      }
 
-      {
-        // EDIT - EDITER LES ARTICLES
-        edit == true &&
-        <Typography>
-          Editor view
-        </Typography>
-      }
+        {
+          // VUE D'ENSEMBLE
+          edit == false && focus === -1 &&
+          <Grid item container spacing={2}>
+            {articleCardList}
+          </Grid>
+        }
+
+        {
+          // VUE FOCUS
+          edit == false && focus !== -1 &&
+          <Grid item>
+            <ArticleFocus element={newsList.find(article => article.id === focus)}
+              onClickShow={() => setFocus(-1)} />
+          </Grid>
+        }
+
+        {
+          // EDIT - EDITER LES ARTICLES
+          edit == true && /* TODO: afficher seuelemnt pour Admin */
+          <Grid item>
+            <ArticleEditCard element={newsList[1]} onClickShow />
+          </Grid>
+        }
+      </Grid>
     </StyledBox>
   );
 }
