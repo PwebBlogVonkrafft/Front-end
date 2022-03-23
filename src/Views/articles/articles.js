@@ -1,83 +1,109 @@
-import { Box, Grid, Paper } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-
-/*
-import img_rhone from "./IMG_4971.jpeg";
-import img_lac from "./IMG_3602.jpeg";
-import img_neige from "./IMG_4515.jpeg";
-*/
-
+import { useState } from "react";
 // Import const
-import {newsList} from "../accueil/bdd/data.js";
-
-/*
-const articleList = [
-  {
-    title: "La Rhône",
-    description: "Cette rivière se trouve près du campus.",
-    image: img_rhone
-  },
-  {
-    title: "Le lac",
-    description: "Ce lac se trouve en Autriche.",
-    image: img_lac
-  },
-  {
-    title: "La neige",
-    description: "Les alpes près de Munich.",
-    image: img_neige
-  }
-]
-*/
+import { newsList } from "../accueil/bdd/data.js";
+import { StyledCard } from "./styles.js";
 
 
 
-function IndividualArticle({article}) {
+
+// id: "0",
+// date: "8 mars 2022",
+// name: "1 million d'abonnés sur Youtube",
+// corpus: "Il fallait s'y attendre et, en effet, la chaîne a atteint un million d'abonnés.",
+// image: image_0,
+// video: video_0,
+// musique: musique_0,
+
+function ElementDisplay({ element }) {
   return (
-    <Card /*sx={{ maxWidth: 345 }}*/>
+    <div>
+      Hello World!
+    </div>
+  )
+}
+
+function ArticleCard({ element, onClick }) {
+  return (
+    <StyledCard sx={{ p: 2 }}>
       <Grid container spacing={1}>
         <Grid item>
           <CardMedia
             component="img"
-            height="140"
-            image={article.image}
-            alt={article.name}
+            height="200"
+            image={element.image}
+            alt={element.name}
           />
         </Grid>
         <Grid item>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {article.name}
+            <Typography variant="h5" component="div">
+              {element.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {article.corpus}
+            <Typography gutterBottom variant="subtitle1" color="text.secondary">
+              {element.date}
+            </Typography>
+            <Typography variant="body1" paragraph>
+              {element.corpus}
             </Typography>
           </CardContent>
         </Grid>
+        <Grid item>
+          <CardActions style={{
+            justifyContent: 'flex-end'
+          }}>
+            <Button variant="contained" size="small" color="secondary"
+              onClick={onClick}
+            >
+              Afficher l'article
+            </Button>
+          </CardActions>
+        </Grid>
       </Grid>
-
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    </StyledCard>
   );
 }
 
 function Articles() {
-  const articleCardList = newsList.map(a => <IndividualArticle article={a} />).reverse();
+  // Focus decrit ce que est affiché dans ce tab Article
+  // 0: liste de tous les articles
+  // 1: focus dans l'intégralité d'un article
+  const [focus, setFocus] = useState(0);
+
+  const articleCardList = newsList.map(a => (
+    <Grid item xs={12} md={6}>
+      <ArticleCard element={a} onClick={() => setFocus(1)} />
+    </Grid>
+  )).reverse();
 
   return (
-    <Box>
-      {articleCardList}
-    </Box>
+    <div>
+      {
+        focus === 0 &&
+        <Grid container spacing={2}>
+          {articleCardList}
+        </Grid>
+      }
+      {
+        focus === 1 &&
+        <>
+          <Typography>
+            Focus page.
+          </Typography>
+          <Button onClick={() => setFocus(0)}>
+            Retour
+          </Button>
+        </>
+      }
+    </div>
   );
 }
+
 
 export default Articles;
