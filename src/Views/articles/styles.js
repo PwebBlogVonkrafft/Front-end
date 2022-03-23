@@ -1,5 +1,6 @@
 import { Button, Card, Slider, Box } from '@material-ui/core';
-import { Style } from '@mui/icons-material';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 import { alpha, styled } from '@mui/material/styles';
 
 // Exemple
@@ -30,6 +31,15 @@ export const StyledButton = styled(Button)(({ theme }) => ({
 export const StyledBox = styled(Box)(({ theme }) => ({
     padding: theme.spacing(2),
     backgroundColor: theme.palette.background.paper,
+}));
+
+export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
+    color: theme.palette.text.primary,
+}));
+
+export const StyledSwitch = styled(Switch)(({ theme }) => ({
+    // backgroundColor: theme.palette.secondary.main,
+    // TODO set activated color to purple everywhere
 }));
 
 // Grid responsiveness: xs, md, ...

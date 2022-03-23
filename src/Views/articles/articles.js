@@ -1,18 +1,13 @@
 import { Grid } from '@material-ui/core';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box'
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useState } from "react";
+import Typography from '@mui/material/Typography';
 import ArticleCard from "./ArticleCard";
 import ArticleFocus from "./ArticleFocus";
 
 // Import const
 import { newsList } from "../accueil/bdd/data.js";
-import { StyledCard, StyledButton, StyledBox } from "./styles.js";
+import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "./styles.js";
 
 
 
@@ -30,6 +25,11 @@ import { StyledCard, StyledButton, StyledBox } from "./styles.js";
 
 
 function Articles() {
+  // Edit decrit le mode de la page Article
+  // false: Show - Afficher les articles
+  // true: Edit - Editer les articles
+  const [edit, setEdit] = useState(false)
+
   // Focus decrit ce que est affiché dans ce tab Article
   // -1: liste de tous les articles
   // >= 0: focus dans l'intégralité de l'article avec le valeur de focus
@@ -44,20 +44,39 @@ function Articles() {
 
   return (
     <StyledBox>
+      <StyledFormControlLabel
+        control={
+          <StyledSwitch
+            color="secondary"
+            checked={edit}
+            onChange={() => setEdit(!edit)}
+          />}
+        label="Modifier"
+      />
+
       {
-        // Vue d'ensemble
-        focus === -1 &&
+        // VUE D'ENSEMBLE
+        edit == false && focus === -1 &&
         <Grid container spacing={2}>
           {articleCardList}
         </Grid>
       }
+
       {
-        // Vue focus
-        focus !== -1 &&
+        // VUE FOCUS
+        edit == false && focus !== -1 &&
         <>
-          <ArticleFocus element={newsList.find(article => article.id == focus)}
+          <ArticleFocus element={newsList.find(article => article.id === focus)}
             onClickShow={() => setFocus(-1)} />
         </>
+      }
+
+      {
+        // EDIT - EDITER LES ARTICLES
+        edit == true &&
+        <Typography>
+          Editor view
+        </Typography>
       }
     </StyledBox>
   );
