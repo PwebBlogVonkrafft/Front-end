@@ -6,14 +6,26 @@ import Typography from '@mui/material/Typography';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import * as React from 'react';
+import { useState } from "react";
 import { StyledButton, StyledCard } from "./styles.js";
 
 function ArticleEdit({ element, onClickRetour }) {
 
-  const [formValues, setFormValues] = useState(defaultValues);
+  const [formValues, setFormValues] = useState(element);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (event) => {
+    // TODO: Copy of new values doesn't work yet.
     event.preventDefault();
+    element = formValues;
+    console.log(formValues);
     console.log(element);
     onClickRetour();
   };
@@ -27,23 +39,29 @@ function ArticleEdit({ element, onClickRetour }) {
               <TextField
                 required
                 id="titleArticle"
-                name="titleArticle"
+                name="name" // Key to key-value-pair in object to save in
                 label="Title"
                 fullWidth
                 multiline
                 rows={2}
                 color="secondary"
-                value={element.name}
-                onChange
+                value={formValues.name}
+                onChange={handleInputChange}
+              />
+              <TextField
+                name='id'
+                label='ID'
+                value={formValues.id}
+                onChange={handleInputChange}
               />
               {/* <Typography variant="h5" component="div">
-              {element.name}
+              {formValues.name}
             </Typography> */}
               <Typography gutterBottom variant="subtitle1" color="text.secondary">
-                {element.date}
+                {formValues.date}
               </Typography>
               <Typography variant="body1" paragraph>
-                {element.corpus}
+                {formValues.corpus}
               </Typography>
             </CardContent>
           </Grid>
@@ -58,12 +76,12 @@ function ArticleEdit({ element, onClickRetour }) {
                   }}>
                   Enregistrer
                 </StyledButton>
-                <StyledButton 
-                onClick={onClickRetour} 
-                startIcon={<CancelIcon />}
-                sx={{
-                  background: "red"
-                }}>
+                <StyledButton
+                  onClick={onClickRetour}
+                  startIcon={<CancelIcon />}
+                  sx={{
+                    background: "red"
+                  }}>
                   Annuler
                 </StyledButton>
               </CardActions>
