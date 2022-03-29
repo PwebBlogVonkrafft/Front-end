@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { StyledCard, StyledButton } from "./styles.js";
 
-function ArticleFocus({ element, onClickShow }) {
+function ArticleFocus({ element, onClickRetour }) {
   return (
     <StyledCard sx={{ p: 2 }}>
       <Grid container spacing={1} direction="column">
@@ -35,7 +35,7 @@ function ArticleFocus({ element, onClickShow }) {
           <CardActions style={{
             justifyContent: 'flex-end'
           }}>
-            <StyledButton onClick={onClickShow}>
+            <StyledButton onClick={onClickRetour}>
               Retour
             </StyledButton>
           </CardActions>

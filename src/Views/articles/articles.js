@@ -4,11 +4,12 @@ import { useState } from "react";
 import Typography from '@mui/material/Typography';
 import ArticleCard from "./ArticleCard";
 import ArticleFocus from "./ArticleFocus";
-import ArticleEditCard from "./ArticleEditCard";
+import ArticleCardEditable from "./ArticleCardEditable";
+import ArticleEdit from "./ArticleEdit";
 
 // Import const
 import { newsList } from "../accueil/bdd/data.js";
-import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "./styles.js";
+import { StyledBox, StyledFormControlLabel, StyledSwitch } from "./styles.js";
 
 
 
@@ -29,19 +30,19 @@ function Articles() {
   // Edit decrit le mode de la page Article
   // false: Show - Afficher les articles
   // true: Edit - Editer les articles
-  const [edit, setEdit] = useState(false)
+  const [editMode, setEditMode] = useState(false)
 
-  // Focus decrit ce que est affiché dans ce tab Article
+  // Focus decrit ce que est affiché dans la page Article
   // -1: liste de tous les articles
   // >= 0: focus dans l'intégralité de l'article avec le valeur de focus
   //       comme id
   const [focus, setFocus] = useState(-1);
 
-  const articleCardList = newsList.map(article => (
-    <Grid item xs={12} /* md={6} */>
-      <ArticleCard element={article} onClickShow={setFocus} />
-    </Grid>
-  )).reverse();
+  // Focus decrit ce que est affiché dans la page Article
+  // -1: liste de tous les articles
+  // >= 0: focus dans l'intégralité de l'article avec le valeur de focus
+  //       comme id
+  const [edit, setEdit] = useState(-1);
 
   return (
     <StyledBox>
@@ -51,8 +52,8 @@ function Articles() {
             control={
               <StyledSwitch
                 color="secondary"
-                checked={edit}
-                onChange={() => setEdit(!edit)}
+                checked={editMode}
+                onChange={() => setEditMode(!editMode)}
               />}
             label="Modifier"
           />
@@ -61,28 +62,52 @@ function Articles() {
 
         {
           // VUE D'ENSEMBLE
-          edit == false && focus === -1 &&
+          editMode === false && focus === -1 && edit  === -1 &&
           <Grid item container spacing={2}>
-            {articleCardList}
+            {newsList.map(article => (
+              <Grid item xs={12} /* md={6} */>
+                <ArticleCard element={article} onClickShow={setFocus} />
+              </Grid>
+            )).reverse()}
           </Grid>
         }
 
         {
-          // VUE FOCUS
-          edit == false && focus !== -1 &&
+          // IDEA: In edit mode show the same list as in view mode with the difference
+          // of displaying one extra button on every ArticleCard to edit it (and maybe a delete button).
+          // This button directs to a form for the individual article where it can be
+          // edited. To add an entirely new article, the same card is called with nothing
+          // filled in. Values in this new card are saved on submit only.
+
+          // EDIT MODE - VUE D'ENSEMBLE
+          editMode === true && focus === -1 && edit === -1 && /* TODO: afficher seuelemnt pour Admin */
+          <Grid item container spacing={2}>
+            {newsList.map(article => (
+              <Grid item xs={12} /* md={6} */>
+                <ArticleCardEditable element={article} onClickEdit={setEdit} /* TODO */ />
+              </Grid>
+            )).reverse()}
+          </Grid>
+        }
+
+        {
+          // FOCUS ARTICLE
+          /* editMode === false &&  */focus !== -1 &&
           <Grid item>
             <ArticleFocus element={newsList.find(article => article.id === focus)}
-              onClickShow={() => setFocus(-1)} />
+              onClickRetour={() => setFocus(-1)} />
           </Grid>
         }
 
         {
-          // EDIT - EDITER LES ARTICLES
-          edit == true && /* TODO: afficher seuelemnt pour Admin */
+          // EDIT ARTICLE
+          /* editMode === true &&  */edit !== -1 &&
           <Grid item>
-            <ArticleEditCard element={newsList[1]} onClickShow />
+            <ArticleEdit element={newsList.find(article => article.id === edit)}
+              onClickRetour={() => setEdit(-1)} />
           </Grid>
         }
+
       </Grid>
     </StyledBox>
   );

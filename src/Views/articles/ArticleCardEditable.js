@@ -3,10 +3,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { StyledCard, StyledButton } from "./styles.js";
 
-function ArticleCard({ element, onClickShow }) {
+function ArticleCardEditable({ element, onClickEdit, onClickDelete }) {
   return (
     <StyledCard sx={{ p: 2 }}>
       <Grid container direction="row" spacing={1}>
@@ -36,8 +38,18 @@ function ArticleCard({ element, onClickShow }) {
             <CardActions style={{
               justifyContent: 'flex-end'
             }}>
-              <StyledButton onClick={() => onClickShow(element.id)}>
-                Afficher l'article
+              <StyledButton
+                startIcon={<EditIcon />}
+                onClick={() => onClickEdit(element.id)}
+                sx={{
+                  background: "green"
+                }}>
+                Modifier
+              </StyledButton>
+              <StyledButton startIcon={<DeleteIcon />} sx={{
+                background: "red"
+              }}>
+                Supprimer (TODO)
               </StyledButton>
             </CardActions>
           </Grid>
@@ -47,4 +59,4 @@ function ArticleCard({ element, onClickShow }) {
   );
 }
 
-export default ArticleCard;
+export default ArticleCardEditable;

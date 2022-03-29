@@ -40,6 +40,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
 export const StyledSwitch = styled(Switch)(({ theme }) => ({
     // backgroundColor: theme.palette.secondary.main,
     // TODO set activated color to purple everywhere
+    // Doesn't work for some reason
 }));
 
 // Grid responsiveness: xs, md, ...
