@@ -2,6 +2,7 @@ import { Grid } from '@material-ui/core';
 import * as React from 'react';
 import { useState } from "react";
 import Typography from '@mui/material/Typography';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import ArticleCard from "./ArticleCard";
 import ArticleFocus from "./ArticleFocus";
 import ArticleCardEditable from "./ArticleCardEditable";
@@ -9,7 +10,7 @@ import ArticleEdit from "./ArticleEdit";
 
 // Import const
 import { newsList } from "../accueil/bdd/data.js";
-import { StyledBox, StyledFormControlLabel, StyledSwitch } from "./styles.js";
+import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "./styles.js";
 
 
 
@@ -61,7 +62,7 @@ function Articles() {
 
         {
           // VUE D'ENSEMBLE
-          editMode === false && focus === -1 && edit  === -1 &&
+          editMode === false && focus === -1 && edit === -1 &&
           <Grid item container spacing={2}>
             {newsList.map(article => (
               <Grid item xs={12} /* md={6} */>
@@ -73,11 +74,35 @@ function Articles() {
 
         {
           // EDIT MODE - VUE D'ENSEMBLE
-          editMode === true && focus === -1 && edit === -1 && /* TODO: afficher seuelemnt pour Admin */
+          editMode === true && focus === -1 && edit === -1 && /* TODO: afficher seulement pour Admin */
           <Grid item container spacing={2}>
+            <Grid item xs={12} /* md={6} */>
+              <StyledButton
+                fullWidth
+                startIcon={<AddBoxIcon />}
+                sx={{ background: "grey" }}
+                onClick={() => {
+                  console.log("Ajouter article")
+                  var newArticle = {
+                    id: newsList.length,
+                    date: "",
+                    name: "",
+                    corpus: "",
+                    image: null,
+                    video: null,
+                    musique: null,
+                  }
+                  newsList.push(newArticle)
+                  setEdit(newArticle.id)
+                }}>
+                Ajouter article
+              </StyledButton>
+            </Grid>
+
             {newsList.map(article => (
               <Grid item xs={12} /* md={6} */>
-                <ArticleCardEditable element={article} onClickEdit={setEdit} /* TODO onClickEdit*/ />
+                <ArticleCardEditable element={article} onClickEdit={setEdit}
+                  onClickDelete={() => console.log("Supprimer article sélectionné")} /* TODO onClickEdit*/ />
               </Grid>
             )).reverse()}
           </Grid>
