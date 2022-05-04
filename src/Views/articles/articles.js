@@ -38,10 +38,9 @@ function Articles() {
   //       comme id
   const [focus, setFocus] = useState(-1);
 
-  // Focus decrit ce que est affiché dans la page Article
+  // Edit decrit ce que est affiché dans la page Article si editMode est activé
   // -1: liste de tous les articles
-  // >= 0: focus dans l'intégralité de l'article avec le valeur de focus
-  //       comme id
+  // >= 0: Editer l'article avec le valeur de edit comme id
   const [edit, setEdit] = useState(-1);
 
   return (
@@ -73,18 +72,12 @@ function Articles() {
         }
 
         {
-          // IDEA: In edit mode show the same list as in view mode with the difference
-          // of displaying one extra button on every ArticleCard to edit it (and maybe a delete button).
-          // This button directs to a form for the individual article where it can be
-          // edited. To add an entirely new article, the same card is called with nothing
-          // filled in. Values in this new card are saved on submit only.
-
           // EDIT MODE - VUE D'ENSEMBLE
           editMode === true && focus === -1 && edit === -1 && /* TODO: afficher seuelemnt pour Admin */
           <Grid item container spacing={2}>
             {newsList.map(article => (
               <Grid item xs={12} /* md={6} */>
-                <ArticleCardEditable element={article} onClickEdit={setEdit} /* TODO */ />
+                <ArticleCardEditable element={article} onClickEdit={setEdit} /* TODO onClickEdit*/ />
               </Grid>
             )).reverse()}
           </Grid>

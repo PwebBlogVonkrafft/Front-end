@@ -1,6 +1,7 @@
 import { Button, Card, Slider, Box } from '@material-ui/core';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { TextField } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 
 // Exemple
@@ -41,6 +42,12 @@ export const StyledSwitch = styled(Switch)(({ theme }) => ({
     // backgroundColor: theme.palette.secondary.main,
     // TODO set activated color to purple everywhere
     // Doesn't work for some reason
+}));
+
+export const StyledTextField = styled(TextField)(({ theme }) => ({
+    marginBottom: 20,
+    // borderColor: theme.palette.secondary.main,
+    // TODO set border color when selected everywhere
 }));
 
 // Grid responsiveness: xs, md, ...
