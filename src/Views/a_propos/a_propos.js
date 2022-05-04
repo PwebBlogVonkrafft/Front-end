@@ -1,10 +1,10 @@
 
 
-function A_propos() {
+function APropos() {
   return ( 
     <p> Hello Word</p>
   );
 }
 
-export default A_propos;
+export default APropos;
 

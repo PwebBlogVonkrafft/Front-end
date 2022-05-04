@@ -1,10 +1,10 @@
 
 
-function Me_retrouver() {
+function MeRetrouver() {
   return ( 
     <p> Hello Word</p>
   );
 }
 
-export default Me_retrouver;
+export default MeRetrouver;
 

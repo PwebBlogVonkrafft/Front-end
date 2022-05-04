@@ -1,60 +1,49 @@
 // Librairies générales
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Avatar from '@mui/material/Avatar';
-import Stack from "@mui/material/Stack";
-import Typography from '@mui/material/Typography';
-
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LibraryMusicTwoToneIcon from '@mui/icons-material/LibraryMusicTwoTone';
 // Librairies pour les icônes
 import NewspaperTwoToneIcon from '@mui/icons-material/NewspaperTwoTone';
-import TodayTwoToneIcon from '@mui/icons-material/TodayTwoTone';
 import OndemandVideoTwoToneIcon from '@mui/icons-material/OndemandVideoTwoTone';
-import LibraryMusicTwoToneIcon from '@mui/icons-material/LibraryMusicTwoTone';
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import SendIcon from "@mui/icons-material/Send";
 import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-import SvgIcon from '@mui/material/SvgIcon';
-
-// Librairies couleurs et thèmes
-import { deepPurple, grey } from '@mui/material/colors';
-import { palette } from '@mui/system';
-
-// Librairies cartes
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";  // Section de texte extensible
-
+import TodayTwoToneIcon from '@mui/icons-material/TodayTwoTone';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 // Librairies boutons 
 import Button from "@mui/material/Button";
-import { useState } from 'react';
-// (avec des icônes)
-import IconButton from "@mui/material/IconButton";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import SendIcon from "@mui/icons-material/Send";
 // (avec une section)
 import ButtonBase from '@mui/material/ButtonBase';
-
-
-
-// Import des médias autres (test)
-import img_news from "./bdd/images/image_home_page.png";
-
+// Librairies cartes
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Collapse from "@mui/material/Collapse"; // Section de texte extensible
+// Librairies couleurs et thèmes
+import { deepPurple, grey } from '@mui/material/colors';
+import Grid from '@mui/material/Grid';
+// (avec des icônes)
+import IconButton from "@mui/material/IconButton";
+import Paper from '@mui/material/Paper';
+import Stack from "@mui/material/Stack";
+import { styled } from '@mui/material/styles';
+import SvgIcon from '@mui/material/SvgIcon';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
 // Import const
-import {newsList, dateList, videoList, musiqueList} from "./bdd/data.js";
+import { dateList, musiqueList, newsList, videoList } from "./bdd/data.js";
+import Counter from './varReducer.js';
 
-// Import pages 
-import HomePage from '../home_page.js';
-import Musiques from '../musiques/musiques.js';
-import Videos from '../videos/videos.js';
-import Articles from '../articles/articles.js';
-import Calendriers from '../calendriers/calendriers.js';
+
+
+
+
+
+
+
+
+
 
 
 
@@ -186,7 +175,6 @@ function Musique() {
   );
 }
 // _________________________________________________________________________________________________________________________________________________________________________________________
-
 
 
 
@@ -458,145 +446,72 @@ function MusiqueGrid({musiques}) {
 
 // Fonction principale renvoyant le résultat
 function Accueil() {
-  const [index, setIndex] = useState(0);
-
-  const handleIndex0 = () => {
-    setIndex(0);
-  };
-
-  const handleIndex1 = () => {
-    setIndex(1);
-  };
-
-  const handleIndex2 = () => {
-    setIndex(2);
-  };
-
-  const handleIndex3 = () => {
-    setIndex(3);
-  };
-
-  const handleIndex4 = () => {
-    setIndex(4);
-  };
-
-/*new Date().toLocaleString() + ""*/
+  /*new Date().toLocaleString() + ""*/
   return (
-    <div>
-    {   //si menu == 0 alors on affiche la fonction "Accueil"
-      index === 0 && 
-        <div> 
-          <Typography color="black" variant="body2">
-            {getCurrentDate()}
-          </Typography>
-          
-          <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}> {/* La propriété CSS overflow est une propriété raccourcie qui définit comment gérer le dépassement du contenu d'un élément dans son bloc.  */}
-            <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-              <Grid container wrap="nowrap" spacing={2}>
-                <Grid item>
-                  <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><NewspaperTwoToneIcon sx={{ width: 45, height: 45 }}></NewspaperTwoToneIcon></Avatar>
-                </Grid>
-                <Grid item xs>
-                  <Typography>{messageN}</Typography>
-                  <News></News>
-                  <div>
-                    <Button 
-                      color="inherit"
-                      variant="contained"
-                      onClick= {handleIndex3}
-                      /*{handleMenu3}*/
-                    >
-                    Accédez à l'intégralité de l'article
-                    </Button>
-                  </div>
-                </Grid>
+      <div>
+        <Typography color="black" variant="body2">
+          {getCurrentDate()}
+        </Typography>
+        
+        <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}> {/* La propriété CSS overflow est une propriété raccourcie qui définit comment gérer le dépassement du contenu d'un élément dans son bloc.  */}
+          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+            <Grid container wrap="nowrap" spacing={2}>
+              <Grid item>
+                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><NewspaperTwoToneIcon sx={{ width: 45, height: 45 }}></NewspaperTwoToneIcon></Avatar>
               </Grid>
-            </StyledPaper>
+              <Grid item xs>
+                <Typography>{messageN}</Typography>
+                <News></News>
+                <div>
+                  <button onClick={() => Counter(3)}>TRY</button>
+                </div>
+              </Grid>
+            </Grid>
+          </StyledPaper>
 
-            <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-              <Grid container wrap="nowrap" spacing={2}>
-                <Grid item>
-                  <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><TodayTwoToneIcon sx={{ width: 45, height: 45 }} ></TodayTwoToneIcon></Avatar>
-                </Grid>
-                <Grid item xs>
-                  <Typography>{messageD}</Typography>
-                  <Day></Day>
-                  <div>
-                    <Button 
-                      color="inherit"
-                      variant="contained"
-                      onClick={handleIndex4}
-                    >
-                    Accédez au calendrier des événements
-                    </Button>
-                  </div>
-                </Grid>
+          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+            <Grid container wrap="nowrap" spacing={2}>
+              <Grid item>
+                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><TodayTwoToneIcon sx={{ width: 45, height: 45 }} ></TodayTwoToneIcon></Avatar>
               </Grid>
-            </StyledPaper>
+              <Grid item xs>
+                <Typography>{messageD}</Typography>
+                <Day></Day>
+                <div>
+                  <button onClick={() => Counter(4)}>TRY</button>
+                </div>
+              </Grid>
+            </Grid>
+          </StyledPaper>
 
-            <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-              <Grid container wrap="nowrap" spacing={2}>
-                <Grid item>
-                  <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><OndemandVideoTwoToneIcon sx={{ width: 45, height: 45 }} ></OndemandVideoTwoToneIcon></Avatar>
-                </Grid>
-                <Grid item xs>
-                  <Typography>{messageV}</Typography>
-                  <Video></Video>
-                </Grid>
+          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+            <Grid container wrap="nowrap" spacing={2}>
+              <Grid item>
+                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><OndemandVideoTwoToneIcon sx={{ width: 45, height: 45 }} ></OndemandVideoTwoToneIcon></Avatar>
               </Grid>
-            </StyledPaper>
+              <Grid item xs>
+                <Typography>{messageV}</Typography>
+                <Video></Video>
+              </Grid>
+            </Grid>
+          </StyledPaper>
 
-            <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-              <Grid container wrap="nowrap" spacing={2}>
-                <Grid item>
-                  <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><LibraryMusicTwoToneIcon sx={{ width: 45, height: 45 }} ></LibraryMusicTwoToneIcon></Avatar>
-                </Grid>
-                <Grid item xs>
-                <Typography>{messageM}</Typography>
-                <Musique></Musique>
-                </Grid>
+          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+            <Grid container wrap="nowrap" spacing={2}>
+              <Grid item>
+                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><LibraryMusicTwoToneIcon sx={{ width: 45, height: 45 }} ></LibraryMusicTwoToneIcon></Avatar>
               </Grid>
-            </StyledPaper>
-          </Box>
-        </div>
-    }
-    {
-      index === 1 && <div> <Musiques/> </div>
-    }
-    {
-      index === 2 && <div> <Videos/> </div>
-    }
-    {
-      index === 3 && 
-        <div> 
-          <News/> 
-          <Button 
-            color="inherit"
-            variant="contained"
-            onClick= {handleIndex0}
-          >
-          <HomeIcon />
-            Revenir à l'accueil
-          </Button>
-        </div>
-    }
-    {
-      index === 4 && 
-        <div> 
-          <Calendriers/> 
-          <Button 
-            color="inherit"
-            variant="contained"
-            onClick= {handleIndex0}
-          >
-          <HomeIcon />
-            Revenir à l'accueil
-          </Button>
-        </div>
-    }
-  </div>
+              <Grid item xs>
+              <Typography>{messageM}</Typography>
+              <Musique></Musique>
+              </Grid>
+            </Grid>
+          </StyledPaper>
+        </Box>        
+      </div>
   );
 }
+
 
 
 export default Accueil;
