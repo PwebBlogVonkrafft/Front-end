@@ -30,6 +30,21 @@ function Articles() {
   // >= 0: Editer l'article avec le valeur de edit comme id
   const [edit, setEdit] = useState(-1);
 
+  // Work-around pour forcer le rerender de la component fonction.
+  // Appeler le setter pour rerender. Le valeur n'est jamais utilisé
+  const [render, forceRender] = useState(false);
+
+  // TODO Following two handlers need to be changed so that they also work
+  // if article.id is not the articles index in newsList
+  const handleStoreArticle = (element) => {
+    newsList[element.id] = element;
+  };
+
+  const handleDeleteArticle = (element) => {
+    newsList.splice(element.id, 1);
+    forceRender(!render)    
+  };
+
   return (
     <StyledBox>
       <Grid container direction="column" spacing={1}>
@@ -68,7 +83,6 @@ function Articles() {
                 startIcon={<AddBoxIcon />}
                 sx={{ background: "grey" }}
                 onClick={() => {
-                  console.log("Ajouter article")
                   var newArticle = {
                     id: newsList.length,
                     date: "",
@@ -88,7 +102,7 @@ function Articles() {
             {newsList.map(article => (
               <Grid item xs={12}>
                 <ArticleCardEditable element={article} onClickEdit={setEdit}
-                  onClickDelete={() => console.log("Supprimer article sélectionné")} /* TODO onClickEdit*/ />
+                  onClickDelete={handleDeleteArticle} />
               </Grid>
             )).reverse()}
           </Grid>
@@ -108,7 +122,7 @@ function Articles() {
           edit !== -1 &&
           <Grid item>
             <ArticleEdit element={newsList.find(article => article.id === edit)}
-              onClickRetour={() => setEdit(-1)} />
+              onClickRetour={() => setEdit(-1)} storeArticle={handleStoreArticle}/>
           </Grid>
         }
 

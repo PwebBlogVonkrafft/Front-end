@@ -47,11 +47,11 @@ function ArticleCardEditable({ element, onClickEdit, onClickDelete }) {
                 Modifier
               </StyledButton>
               <StyledButton startIcon={<DeleteIcon />}
-                onClick={onClickDelete}
+                onClick={() => onClickDelete(element)}
                 sx={{
                   background: "red"
                 }}>
-                Supprimer (TODO)
+                Supprimer
               </StyledButton>
             </CardActions>
           </Grid>

@@ -11,7 +11,7 @@ import * as React from 'react';
 import { useState } from "react";
 import { StyledButton, StyledCard, StyledTextField } from "./styles.js";
 
-function ArticleEdit({ element, onClickRetour }) {
+function ArticleEdit({ element, onClickRetour, storeArticle }) {
 
   const [formValues, setFormValues] = useState(element);
 
@@ -33,11 +33,9 @@ function ArticleEdit({ element, onClickRetour }) {
   };
 
   const handleSubmit = (event) => {
-    // TODO: Copy of new values doesn't work yet. How are they stored in BDD???
     event.preventDefault();
-    element = formValues;
-    console.log(formValues);
-    console.log(element);
+    console.log(formValues)
+    storeArticle(formValues)
     onClickRetour();
   };
 
@@ -49,7 +47,6 @@ function ArticleEdit({ element, onClickRetour }) {
             <CardContent>
 
               <StyledTextField
-                required
                 id="titleArticle"
                 name="name" // Key to key-value-pair in object to save in
                 label="Titre"
