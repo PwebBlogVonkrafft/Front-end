@@ -111,6 +111,8 @@ function HomePage() {
     );
 }
 
+
+
 export default HomePage;
 
 //{shouldRedirect && <Navigate replace to="/accueil" />}
