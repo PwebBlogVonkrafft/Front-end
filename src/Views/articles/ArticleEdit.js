@@ -43,9 +43,9 @@ function ArticleEdit({ element, onClickRetour }) {
 
   return (
     <StyledCard sx={{ p: 2 }}>
-      <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+      <form noValidate autoComplete='off' onSubmit={handleSubmit} style={{ flex: 1 }}>
         <Grid container direction="row" spacing={1}>
-          <Grid item xs={8}>
+          <Grid item sm={7}>
             <CardContent>
 
               <StyledTextField
@@ -83,8 +83,8 @@ function ArticleEdit({ element, onClickRetour }) {
 
             </CardContent>
           </Grid>
-          <Grid item xs container direction="column" spacing={2}>
-            <Grid item xs>
+          <Grid item sm={5} container direction="column" spacing={2}>
+            <Grid item>
               <CardMedia
                 component="img"
                 height="200"
@@ -94,7 +94,7 @@ function ArticleEdit({ element, onClickRetour }) {
               />
             </Grid>
 
-            <Grid item xs>
+            <Grid item>
               <StyledButton
                 fullWidth
                 component="label"
@@ -106,8 +106,8 @@ function ArticleEdit({ element, onClickRetour }) {
               </StyledButton>
             </Grid>
 
-            <Grid item xs container direction="row">
-              <Grid item xs>
+            <Grid item container direction="row" spacing={2}>
+              <Grid item xs={6}>
                 <StyledButton
                   type="submit"
                   startIcon={<SaveIcon />}
@@ -118,8 +118,7 @@ function ArticleEdit({ element, onClickRetour }) {
                   Enregistrer
                 </StyledButton>
               </Grid>
-              <Grid item xs />
-              <Grid item xs>
+              <Grid item xs={6}>
                 <StyledButton
                   onClick={onClickRetour}
                   startIcon={<CancelIcon />}

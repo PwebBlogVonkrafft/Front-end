@@ -13,24 +13,10 @@ import { newsList } from "../accueil/bdd/data.js";
 import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "./styles.js";
 
 
-
-
-// id: "0",
-// date: "8 mars 2022",
-// name: "1 million d'abonnés sur Youtube",
-// corpus: "Il fallait s'y attendre et, en effet, la chaîne a atteint un million d'abonnés.",
-// image: image_0,
-// video: video_0,
-// musique: musique_0,
-
-
-
-
-
 function Articles() {
-  // Edit decrit le mode de la page Article
-  // false: Show - Afficher les articles
-  // true: Edit - Editer les articles
+  // EditMode decrit le mode de la page Article
+  // false: Afficher les articles SANS fonctionalité de modification
+  // true: Afficher les articles AVEC fonctionalité de modification
   const [editMode, setEditMode] = useState(false)
 
   // Focus decrit ce que est affiché dans la page Article
@@ -65,7 +51,7 @@ function Articles() {
           editMode === false && focus === -1 && edit === -1 &&
           <Grid item container spacing={2}>
             {newsList.map(article => (
-              <Grid item xs={12} /* md={6} */>
+              <Grid item xs={12}>
                 <ArticleCard element={article} onClickShow={setFocus} />
               </Grid>
             )).reverse()}
@@ -76,7 +62,7 @@ function Articles() {
           // EDIT MODE - VUE D'ENSEMBLE
           editMode === true && focus === -1 && edit === -1 && /* TODO: afficher seulement pour Admin */
           <Grid item container spacing={2}>
-            <Grid item xs={12} /* md={6} */>
+            <Grid item xs={12}>
               <StyledButton
                 fullWidth
                 startIcon={<AddBoxIcon />}
@@ -100,7 +86,7 @@ function Articles() {
             </Grid>
 
             {newsList.map(article => (
-              <Grid item xs={12} /* md={6} */>
+              <Grid item xs={12}>
                 <ArticleCardEditable element={article} onClickEdit={setEdit}
                   onClickDelete={() => console.log("Supprimer article sélectionné")} /* TODO onClickEdit*/ />
               </Grid>
@@ -110,7 +96,7 @@ function Articles() {
 
         {
           // FOCUS ARTICLE
-          /* editMode === false &&  */focus !== -1 &&
+          focus !== -1 &&
           <Grid item>
             <ArticleFocus element={newsList.find(article => article.id === focus)}
               onClickRetour={() => setFocus(-1)} />
@@ -119,7 +105,7 @@ function Articles() {
 
         {
           // EDIT ARTICLE
-          /* editMode === true &&  */edit !== -1 &&
+          edit !== -1 &&
           <Grid item>
             <ArticleEdit element={newsList.find(article => article.id === edit)}
               onClickRetour={() => setEdit(-1)} />

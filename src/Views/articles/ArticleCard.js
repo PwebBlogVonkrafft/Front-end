@@ -10,7 +10,7 @@ function ArticleCard({ element, onClickShow }) {
   return (
     <StyledCard sx={{ p: 2 }}>
       <Grid container direction="row" spacing={1}>
-        <Grid item xs>
+        <Grid item xs={12} sm={4}>
           <CardMedia
             component="img"
             height="200"
@@ -18,7 +18,7 @@ function ArticleCard({ element, onClickShow }) {
             alt={element.name}
           />
         </Grid>
-        <Grid item xs={8} container direction="column">
+        <Grid item xs={12} sm={8} container direction="column">
           <Grid item>
             <CardContent>
               <Typography variant="h5" component="div">
