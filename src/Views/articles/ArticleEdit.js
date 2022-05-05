@@ -92,6 +92,9 @@ function ArticleEdit({ element, onClickRetour, storeArticle }) {
               />
             </Grid>
 
+            {/* TODO Possibility to upload videos or music. Implementation when connection
+            to database works. */}
+
             <Grid item>
               <StyledButton
                 fullWidth
