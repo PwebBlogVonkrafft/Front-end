@@ -34,15 +34,13 @@ function Articles() {
   // Appeler le setter pour rerender. Le valeur n'est jamais utilisé
   const [render, forceRender] = useState(false);
 
-  // TODO Following two handlers need to be changed so that they also work
-  // if article.id is not the articles index in newsList
   const handleStoreArticle = (element) => {
-    newsList[element.id] = element;
+    newsList[newsList.findIndex(article => article.id === element.id)] = element;
   };
 
   const handleDeleteArticle = (element) => {
-    newsList.splice(element.id, 1);
-    forceRender(!render)    
+    newsList.splice(newsList.findIndex(article => article.id === element.id), 1);
+    forceRender(!render);
   };
 
   return (
