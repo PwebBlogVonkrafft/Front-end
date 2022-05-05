@@ -34,6 +34,8 @@ function Articles() {
   // Appeler le setter pour rerender. Le valeur n'est jamais utilisé
   const [render, forceRender] = useState(false);
 
+  // TODO These two handlers only change the newsList object.
+  // Manipulation of database still needs to be implemented with axios
   const handleStoreArticle = (element) => {
     newsList[newsList.findIndex(article => article.id === element.id)] = element;
   };
@@ -73,7 +75,8 @@ function Articles() {
 
         {
           // EDIT MODE - VUE D'ENSEMBLE
-          editMode === true && focus === -1 && edit === -1 && /* TODO: afficher seulement pour Admin */
+          // TODO Afficher edit mode seulement pour Admin
+          editMode === true && focus === -1 && edit === -1 && 
           <Grid item container spacing={2}>
             <Grid item xs={12}>
               <StyledButton

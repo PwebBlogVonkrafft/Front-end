@@ -24,7 +24,8 @@ function ArticleEdit({ element, onClickRetour, storeArticle }) {
   };
 
   const handleUploadImage = (e) => {
-    // TODO: Only path to image is changed. Entire image needs to change
+    // TODO: Only path to image is changed. Entire image needs to change and be loaded into database on submit.
+    // Explained with axios here: https://www.youtube.com/watch?v=sp9r6hSWH_o
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
