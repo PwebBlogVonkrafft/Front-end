@@ -16,6 +16,7 @@ import SkeletonTest from './example/skeleton_test';
 
 import Accueil from './accueil/accueil.js';
 import Articles from './articles/articles';
+import Musiques from './musiques/musiques';
 
 
 
@@ -130,7 +131,7 @@ function HomePage() {
                     menu === 0 && <div> <Accueil/></div>
                 }
                 {
-                    menu === 1 && <div> <VerticalTabs/> </div>
+                    menu === 1 && <div> <Musiques/> </div>
                 }
                 {
                     menu === 2 && <div> <MediaControlCard/> </div>
