@@ -4,10 +4,13 @@ import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import * as React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import TemporaryDrawer from "./Drawer";
 
 
 
 function HomePage() {
+    //const [shouldRedirect, setShouldRedirect] = useState(true);
+
     const navigate = useNavigate();
 
     //les handleChanges
@@ -40,11 +43,10 @@ function HomePage() {
     };
     return (
         <Container>
-        
             <div>
                 <AppBar color="secondary" position="static" sx={{alignItems: 'center'}}>
                     <Toolbar>
-
+                    <TemporaryDrawer/>
                         <div>
                             <Button 
                                 color="inherit"
@@ -113,7 +115,7 @@ function HomePage() {
 
 export default HomePage;
 
-
+//{shouldRedirect && <Navigate replace to="/accueil" />}
 
 
  
