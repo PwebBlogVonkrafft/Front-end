@@ -33,7 +33,6 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 // Import const
 import { dateList, musiqueList, newsList, videoList } from "./bdd/data.js";
-import Counter from './varReducer.js';
 
 
 
@@ -463,7 +462,7 @@ function Accueil() {
                 <Typography>{messageN}</Typography>
                 <News></News>
                 <div>
-                  <button onClick={() => Counter(3)}>TRY</button>
+                  <button>TRY</button>
                 </div>
               </Grid>
             </Grid>
@@ -478,7 +477,7 @@ function Accueil() {
                 <Typography>{messageD}</Typography>
                 <Day></Day>
                 <div>
-                  <button onClick={() => Counter(4)}>TRY</button>
+                  <button>TRY</button>
                 </div>
               </Grid>
             </Grid>
