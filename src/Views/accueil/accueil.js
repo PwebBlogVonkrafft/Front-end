@@ -28,7 +28,6 @@ import IconButton from "@mui/material/IconButton";
 import Paper from '@mui/material/Paper';
 import Stack from "@mui/material/Stack";
 import { styled } from '@mui/material/styles';
-import SvgIcon from '@mui/material/SvgIcon';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 // Import const
@@ -74,16 +73,6 @@ function getCurrentDate(){
 
 
 
-function HomeIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
-
-
-
 // div avec des CSS
 const StyledPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -119,9 +108,6 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-
-
-const AppContext = React.createContext();
 
 
 
