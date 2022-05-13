@@ -50,8 +50,7 @@ function HomePage() {
                         <div>
                             <Button 
                                 color="inherit"
-                                //pour faire appelle à la fonction handleMenu on utilise onClick 
-                                //le bouton Acceuil va dynamiquement affecter la valeur 0 à la constante menu 
+                                //pour faire appelle à la fonction handleMenu on utilise onClick
                                 onClick={handleMenu0}
                             >
                                 Accueil

@@ -1,20 +1,15 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// Librairies pour les icônes
 import SendIcon from "@mui/icons-material/Send";
 import ShareIcon from "@mui/icons-material/Share";
 import Avatar from '@mui/material/Avatar';
-// Librairies boutons 
 import Button from "@mui/material/Button";
-// (avec une section)
 import ButtonBase from '@mui/material/ButtonBase';
-// Librairies cartes
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Collapse from "@mui/material/Collapse"; // Section de texte extensible
-// Librairies couleurs et thèmes
 import { grey } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
 import IconButton from "@mui/material/IconButton";
@@ -23,8 +18,6 @@ import Stack from "@mui/material/Stack";
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-
-
 
 
   

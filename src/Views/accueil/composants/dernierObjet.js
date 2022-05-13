@@ -1,5 +1,4 @@
 import * as React from 'react';
-// Import const
 import { dateList, musiqueList, newsList, videoList } from "../bdd/data";
 import { DateGrid, DerniereNewsCard, MusiqueGrid, VideoGrid } from "./blocFonctionnel";
 

@@ -1,11 +1,11 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import HomeIcon from '@mui/icons-material/Home';
+import LibraryMusicTwoToneIcon from '@mui/icons-material/LibraryMusicTwoTone';
 import MenuIcon from '@mui/icons-material/Menu';
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
-import NewspaperIcon from '@mui/icons-material/Newspaper';
-import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import NewspaperTwoToneIcon from '@mui/icons-material/NewspaperTwoTone';
+import OndemandVideoTwoToneIcon from '@mui/icons-material/OndemandVideoTwoTone';
+import TodayTwoToneIcon from '@mui/icons-material/TodayTwoTone';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
@@ -21,43 +21,6 @@ import { Link } from 'react-router-dom';
 
 export default function TemporaryDrawer() {
 
-  /*
-  const navigate = useNavigate();
-
-  //les handleChanges
-  const handleMenu0 = () => {
-      navigate("/accueil");
-  };
-
-  const handleMenu1 = () => {
-      navigate("/musiques");
-  };
-
-  const handleMenu2 = () => {
-      navigate("/videos");
-  };
-
-  const handleMenu3 = () => {
-      navigate("/articles");
-  };
-
-  const handleMenu4 = () => {
-      navigate("/calendriers");
-  };
-
-  const handleMenu5 = () => {
-      navigate("/aPropos");
-  };
-
-  const handleMenu6 = () => {
-      navigate("/meRetrouver");
-  };
-  */
-
-
-
-
-
   const [state, setState] = React.useState({
     left: false,
   });
@@ -70,12 +33,9 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-
-  const indexList = [<HomeIcon/>, <MusicNoteIcon/>, <OndemandVideoIcon/>, <NewspaperIcon/>, <CalendarTodayIcon/>, <AccountCircleIcon/>, <AlternateEmailIcon/>];
+  const indexList = [<HomeIcon/>, <LibraryMusicTwoToneIcon/>, <OndemandVideoTwoToneIcon/>, <NewspaperTwoToneIcon/>, <TodayTwoToneIcon/>, <AccountCircleIcon/>, <AlternateEmailIcon/>];
   const pathList = ['/accueil', '/musiques', '/videos', '/articles', '/calendriers', '/aPropos' , '/meRetrouver'];
 
-
-  
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -85,13 +45,12 @@ export default function TemporaryDrawer() {
     >
       <List>
         {['Home', 'Musiques', 'Videos', 'Articles', 'Calendrier', 'A Propos', 'Me Retrouver'].map((text, index) => (
-        
-        <Link to = {pathList[index]}> 
-            <ListItem button key={text}>
+        <Link to = {pathList[index]} style={{ textDecoration: 'none' }}> {/*Pour supprimer l'affichage du lien souligné*/}
+            <ListItem key={text}>
               <ListItemIcon>
                 {indexList[index]}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text} sx={{ color: 'text.primary', display: 'inline', fontSize: 14 }}/>
             </ListItem>
         </Link>
         ))}

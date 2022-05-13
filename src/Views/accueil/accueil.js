@@ -1,20 +1,17 @@
-// Librairies générales
 import LibraryMusicTwoToneIcon from '@mui/icons-material/LibraryMusicTwoTone';
-// Librairies pour les icônes
 import NewspaperTwoToneIcon from '@mui/icons-material/NewspaperTwoTone';
 import OndemandVideoTwoToneIcon from '@mui/icons-material/OndemandVideoTwoTone';
 import TodayTwoToneIcon from '@mui/icons-material/TodayTwoTone';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-// Librairies couleurs et thèmes
 import { deepPurple } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
-// (avec des icônes)
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Day, Musique, News, Video } from "./composants/dernierObjet";
+
 
 
 // div avec des CSS
