@@ -35,7 +35,7 @@ export default function TemporaryDrawer() {
   };
 // Construction de l'élément : icône + lien, + texte (ligne 48)
   const indexList = [<HomeIcon color="secondary" sx={{ fontSize: 40 }}/>, <LibraryMusicTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <OndemandVideoTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <NewspaperTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <TodayTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <AccountCircleIcon color="secondary" sx={{ fontSize: 40 }}/>, <AlternateEmailIcon color="secondary" sx={{ fontSize: 40 }}/>];
-  const pathList = ['/', '/musiques', '/videos', '/articles', '/calendriers', '/aPropos' , '/meRetrouver'];
+  const pathList = ['/', '/musiques', '/videos', '/articles/-1', '/calendriers', '/aPropos' , '/meRetrouver'];
 
   const list = (anchor) => (
     <Box
