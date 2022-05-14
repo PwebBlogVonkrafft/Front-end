@@ -7,7 +7,6 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import TemporaryDrawer from "./Drawer";
 
 
-
 function HomePage() {
     //const [shouldRedirect, setShouldRedirect] = useState(true);
 
@@ -15,7 +14,7 @@ function HomePage() {
 
     //les handleChanges
     const handleMenu0 = () => {
-        navigate("/accueil");
+        navigate("/");
     };
 
     const handleMenu1 = () => {
@@ -27,7 +26,7 @@ function HomePage() {
     };
 
     const handleMenu3 = () => {
-        navigate("/articles");
+        navigate("/articles/-1");
     };
 
     const handleMenu4 = () => {
@@ -44,9 +43,9 @@ function HomePage() {
     return (
         <Container>
             <div>
-                <AppBar color="secondary" position="static" sx={{alignItems: 'center'}}>
+                <AppBar color="secondary" position="static" sx={{ justifyContent: 'flex-end', alignItems: 'center'}} >
                     <Toolbar>
-                    <TemporaryDrawer/>
+                        <TemporaryDrawer/>
                         <div>
                             <Button 
                                 color="inherit"
@@ -81,28 +80,28 @@ function HomePage() {
                             </Button>
                         </div>
                         <div>
-                          <Button 
-                            color="inherit"
-                            onClick={handleMenu4}
-                          >
-                            Calendrier
-                          </Button>
+                            <Button 
+                                color="inherit"
+                                onClick={handleMenu4}
+                            >
+                                Calendrier
+                            </Button>
                         </div>
                         <div>
-                          <Button 
-                            color="inherit"
-                            onClick={handleMenu5}
-                          >
-                            Biographie
-                          </Button>
+                            <Button 
+                                color="inherit"
+                                onClick={handleMenu5}
+                            >
+                                Biographie
+                            </Button>
                         </div>
                         <div>
-                          <Button 
-                            color="inherit"
-                            onClick={handleMenu6}
-                          >
-                            Me retrouver
-                          </Button>
+                            <Button 
+                                color="inherit"
+                                onClick={handleMenu6}
+                            >
+                                Me retrouver
+                            </Button>
                         </div>            
                     </Toolbar>
                 </AppBar>

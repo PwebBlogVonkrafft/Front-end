@@ -4,7 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { StyledCard, StyledButton } from "./styles.js";
+import { getCurrentDate } from '../accueil/composants/dateToString.js';
+import { StyledButton, StyledCard } from "./styles.js";
 
 function ArticleFocus({ element, onClickRetour }) {
   return (
@@ -24,7 +25,7 @@ function ArticleFocus({ element, onClickRetour }) {
               {element.name}
             </Typography>
             <Typography gutterBottom variant="subtitle1" color="text.secondary">
-              {element.date}
+              {getCurrentDate(element)}
             </Typography>
             <Typography variant="body1" paragraph>
               {element.corpus}

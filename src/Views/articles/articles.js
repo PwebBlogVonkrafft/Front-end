@@ -1,23 +1,28 @@
 import { Grid } from '@material-ui/core';
-import * as React from 'react';
-import { useState } from "react";
-import Typography from '@mui/material/Typography';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import * as React from 'react';
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
+import { newsList } from "../accueil/bdd/data.js";
 import ArticleCard from "./ArticleCard";
-import ArticleFocus from "./ArticleFocus";
 import ArticleCardEditable from "./ArticleCardEditable";
 import ArticleEdit from "./ArticleEdit";
-
-// Import const
-import { newsList } from "../accueil/bdd/data.js";
+import ArticleFocus from "./ArticleFocus";
 import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "./styles.js";
 
 
 function Articles() {
+  let {idLast} = useParams();
+  let navigate = useNavigate();
+  //Lorsqu'un article est sélectionné, la route ne change pas
+  useEffect(() => {
+    setFocus(() => idLast);
+  }, [idLast]);
+
   // EditMode decrit le mode de la page Article
   // false: Afficher les articles SANS fonctionalité de modification
   // true: Afficher les articles AVEC fonctionalité de modification
-  const [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState(false);
 
   // Focus decrit ce que est affiché dans la page Article
   // -1: liste de tous les articles
@@ -60,10 +65,9 @@ function Articles() {
           />
         </Grid>
 
-
         {
           // VUE D'ENSEMBLE
-          editMode === false && focus === -1 && edit === -1 &&
+          editMode == false && focus == -1 && edit == -1 &&
           <Grid item container spacing={2}>
             {newsList.map(article => (
               <Grid item xs={12}>
@@ -76,7 +80,7 @@ function Articles() {
         {
           // EDIT MODE - VUE D'ENSEMBLE
           // TODO Afficher edit mode seulement pour Admin
-          editMode === true && focus === -1 && edit === -1 && 
+          editMode == true && focus == -1 && edit == -1 && 
           <Grid item container spacing={2}>
             <Grid item xs={12}>
               <StyledButton
@@ -111,16 +115,16 @@ function Articles() {
 
         {
           // FOCUS ARTICLE
-          focus !== -1 &&
+          focus != -1 &&
           <Grid item>
             <ArticleFocus element={newsList.find(article => article.id === focus)}
-              onClickRetour={() => setFocus(-1)} />
+              onClickRetour={() =>  navigate("/articles/-1")} />
           </Grid>
         }
 
         {
           // EDIT ARTICLE
-          edit !== -1 &&
+          edit != -1 &&
           <Grid item>
             <ArticleEdit element={newsList.find(article => article.id === edit)}
               onClickRetour={() => setEdit(-1)} storeArticle={handleStoreArticle}/>

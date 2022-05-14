@@ -1,12 +1,13 @@
 import { Grid } from '@material-ui/core';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
-import { StyledCard, StyledButton } from "./styles.js";
+import { getCurrentDate } from '../accueil/composants/dateToString.js';
+import { StyledButton, StyledCard } from "./styles.js";
 
 function ArticleCardEditable({ element, onClickEdit, onClickDelete }) {
   return (
@@ -27,7 +28,7 @@ function ArticleCardEditable({ element, onClickEdit, onClickDelete }) {
                 {element.name}
               </Typography>
               <Typography gutterBottom variant="subtitle1" color="text.secondary">
-                {element.date}
+                {getCurrentDate(element)}
               </Typography>
               <Typography variant="body1" paragraph>
                 {element.corpus}

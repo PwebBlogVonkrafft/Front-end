@@ -18,9 +18,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-
-
-  
+import { getCurrentDate, getCurrentDateConcert } from "./dateToString";
 
 // Mise en forme de l'objet "icône fonctionnelle"
 const ExpandMore = styled((props) => {
@@ -53,7 +51,8 @@ const DerniereNewsCard = ({news}) => {
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
-  
+    
+    
     return (
       <Card 
         elevation={0}
@@ -64,8 +63,7 @@ const DerniereNewsCard = ({news}) => {
           flexGrow: 1,
           backgroundColor: (theme) =>
             theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        }}>
-        
+        }}> 
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase sx={{ width: 128, height: 128 }}>
@@ -78,9 +76,8 @@ const DerniereNewsCard = ({news}) => {
           <Grid item xs={12} sm container>
             <CardHeader
               title={news.name}
-              subheader={news.date}
+              subheader={getCurrentDate(news)}
             />
-  
             <CardContent>
               <Typography variant="body2" color="text.secondary">
               <Typography paragraph>Appuyez pour en savoir plus :</Typography>
@@ -138,7 +135,7 @@ const DerniereNewsCard = ({news}) => {
           <Grid item>
             <ButtonBase sx={{ width: 128, height: 128 }}>
             <Stack direction="row" spacing={2}>
-              <Avatar sx={{ width: 110, height: 110, bgcolor: grey[400],}}>{dates.date_concert}</Avatar>
+              <Avatar sx={{ width: 110, height: 110, bgcolor: grey[400],}}>{getCurrentDateConcert(dates)}</Avatar>
             </Stack>
             </ButtonBase>
           </Grid>
@@ -147,7 +144,7 @@ const DerniereNewsCard = ({news}) => {
               <Grid item xs>
                 <CardHeader
                   title={dates.name}
-                  subheader={dates.date_concert}
+                  subheader={getCurrentDate(dates)}
                 />
                 <Typography variant="body2" color="text.secondary">
                   Lieu : {dates.lieu}
@@ -222,7 +219,7 @@ const DerniereNewsCard = ({news}) => {
               <Grid item xs>
                 <CardHeader
                   title={videos.name}
-                  subheader={videos.date}
+                  subheader={getCurrentDate(videos)}
                 />
                 <Typography variant="body2" color="text.secondary">
                   {videos.description}
@@ -282,7 +279,7 @@ const DerniereNewsCard = ({news}) => {
               <Grid item xs>
                 <CardHeader
                   title={musiques.name}
-                  subheader={musiques.date}
+                  subheader={getCurrentDate(musiques)}
                 />
                 <Typography variant="body2" color="text.secondary">
                   {musiques.description}

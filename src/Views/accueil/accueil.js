@@ -25,73 +25,71 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 
 
 // Titres de chaque section
-const messageN = `Dernière news`;
-const messageD = `Dernière date`;
-const messageV = `Dernière vidéo`;
-const messageM = `Dernière musique`;
+const messageN = 'Dernier article';
+const messageD = 'Dernière date';
+const messageV = 'Dernière vidéo';
+const messageM = 'Dernière musique';
 
 
 // Fonction principale renvoyant le résultat
 function Accueil() {
-  /*new Date().toLocaleString() + ""*/
-  return (
-      <div>      
-        <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}> {/* La propriété CSS overflow est une propriété raccourcie qui définit comment gérer le dépassement du contenu d'un élément dans son bloc.  */}
-          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-            <Grid container wrap="nowrap" spacing={2}>
-              <Grid item>
-                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><NewspaperTwoToneIcon sx={{ width: 45, height: 45 }}></NewspaperTwoToneIcon></Avatar>
-              </Grid>
-              <Grid item xs>
-                <Typography>{messageN}</Typography>
-                <News></News>
-                <div>
-                  <button>TRY</button>
-                </div>
-              </Grid>
+  return (    
+    <Box sx={{ justifyContent: 'flex-end', flexGrow: 1, overflow: 'hidden', px: 3 }}> {/* La propriété CSS overflow est une propriété raccourcie qui définit comment gérer le dépassement du contenu d'un élément dans son bloc.  */}
+      {
+        <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><NewspaperTwoToneIcon sx={{ width: 45, height: 45 }}/></Avatar>
             </Grid>
-          </StyledPaper>
+            <Grid item xs>
+              <Typography>{messageN}</Typography>
+              <News/>
+            </Grid>
+          </Grid>
+        </StyledPaper>
+      }
+      {
+        <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><TodayTwoToneIcon sx={{ width: 45, height: 45 }} /></Avatar>
+            </Grid>
+            <Grid item xs>
+              <Typography>{messageD}</Typography>
+              <Day/>
+            </Grid>
+          </Grid>
+        </StyledPaper>
+      }
 
-          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-            <Grid container wrap="nowrap" spacing={2}>
-              <Grid item>
-                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><TodayTwoToneIcon sx={{ width: 45, height: 45 }} ></TodayTwoToneIcon></Avatar>
-              </Grid>
-              <Grid item xs>
-                <Typography>{messageD}</Typography>
-                <Day></Day>
-                <div>
-                  <button>TRY</button>
-                </div>
-              </Grid>
+      {
+        <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><OndemandVideoTwoToneIcon sx={{ width: 45, height: 45 }} /></Avatar>
             </Grid>
-          </StyledPaper>
+            <Grid item xs>
+              <Typography>{messageV}</Typography>
+              <Video/>
+            </Grid>
+          </Grid>
+        </StyledPaper>
+      }
 
-          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-            <Grid container wrap="nowrap" spacing={2}>
-              <Grid item>
-                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><OndemandVideoTwoToneIcon sx={{ width: 45, height: 45 }} ></OndemandVideoTwoToneIcon></Avatar>
-              </Grid>
-              <Grid item xs>
-                <Typography>{messageV}</Typography>
-                <Video></Video>
-              </Grid>
+      {
+        <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><LibraryMusicTwoToneIcon sx={{ width: 45, height: 45 }} /></Avatar>
             </Grid>
-          </StyledPaper>
-
-          <StyledPaper elevation={10} sx={{ my: 5, mx: 'auto', p: 5, }}>
-            <Grid container wrap="nowrap" spacing={2}>
-              <Grid item>
-                <Avatar component={Paper} elevation={10} sx={{ width: 80, height: 80, bgcolor: deepPurple[500] }} ><LibraryMusicTwoToneIcon sx={{ width: 45, height: 45 }} ></LibraryMusicTwoToneIcon></Avatar>
-              </Grid>
-              <Grid item xs>
-              <Typography>{messageM}</Typography>
-              <Musique></Musique>
-              </Grid>
+            <Grid item xs>
+            <Typography>{messageM}</Typography>
+            <Musique/>
             </Grid>
-          </StyledPaper>
-        </Box>        
-      </div>
+          </Grid>
+        </StyledPaper>
+      }
+    </Box>
   );
 }
 

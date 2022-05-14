@@ -9,15 +9,17 @@ import MeRetrouver from "./me_retrouver/me_retrouver";
 import Musiques from "./musiques/musiques";
 import Videos from "./videos/videos";
 
+//to={`/article/${-1}`}
 
 const App = () => {
+
     let routes = useRoutes([
       { 
         path: '/', 
         element: <HomePage/>,
         children: [
         { 
-          path: '/accueil', 
+          path: '/', 
           element: <Accueil/> 
         },
         { 
@@ -29,7 +31,7 @@ const App = () => {
           element: <Videos/> 
         },
         { 
-          path: '/articles', 
+          path: '/articles/:idLast', 
           element: <Articles/> 
         },
         { 
@@ -51,3 +53,6 @@ const App = () => {
   }
 
   export default App;
+
+
+  

@@ -1,3 +1,4 @@
+// Menu dans la barre latérale
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import HomeIcon from '@mui/icons-material/Home';
@@ -32,9 +33,9 @@ export default function TemporaryDrawer() {
 
     setState({ ...state, [anchor]: open });
   };
-
-  const indexList = [<HomeIcon/>, <LibraryMusicTwoToneIcon/>, <OndemandVideoTwoToneIcon/>, <NewspaperTwoToneIcon/>, <TodayTwoToneIcon/>, <AccountCircleIcon/>, <AlternateEmailIcon/>];
-  const pathList = ['/accueil', '/musiques', '/videos', '/articles', '/calendriers', '/aPropos' , '/meRetrouver'];
+// Construction de l'élément : icône + lien, + texte (ligne 48)
+  const indexList = [<HomeIcon color="secondary" sx={{ fontSize: 40 }}/>, <LibraryMusicTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <OndemandVideoTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <NewspaperTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <TodayTwoToneIcon color="secondary" sx={{ fontSize: 40 }}/>, <AccountCircleIcon color="secondary" sx={{ fontSize: 40 }}/>, <AlternateEmailIcon color="secondary" sx={{ fontSize: 40 }}/>];
+  const pathList = ['/', '/musiques', '/videos', '/articles', '/calendriers', '/aPropos' , '/meRetrouver'];
 
   const list = (anchor) => (
     <Box
@@ -63,7 +64,7 @@ export default function TemporaryDrawer() {
     <div>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon /></Button>
+          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon sx={{ color: 'white' }}/></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
