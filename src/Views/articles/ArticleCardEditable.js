@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
-import { StyledCard, StyledButton } from "./styles.js";
+import { StyledCard, StyledButton } from "../styles/styles.js";
 
 function ArticleCardEditable({ element, onClickEdit, onClickDelete }) {
   return (

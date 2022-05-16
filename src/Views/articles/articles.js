@@ -10,7 +10,7 @@ import ArticleEdit from "./ArticleEdit";
 
 // Import const
 import { newsList } from "../accueil/bdd/data.js";
-import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "./styles.js";
+import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "../styles/styles.js";
 
 
 function Articles() {

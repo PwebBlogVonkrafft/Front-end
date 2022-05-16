@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { StyledCard, StyledButton } from "./styles.js";
+import { StyledCard, StyledButton } from "../styles/styles.js";
 
 function ArticleCard({ element, onClickShow }) {
   return (

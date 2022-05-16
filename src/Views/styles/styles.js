@@ -1,4 +1,4 @@
-import { Button, Card, Slider, Box } from '@material-ui/core';
+import { Button, Card, Slider, Box, Chip } from '@material-ui/core';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { TextField } from '@mui/material';
