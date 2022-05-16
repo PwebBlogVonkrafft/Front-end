@@ -16,6 +16,7 @@ import SkeletonTest from './example/skeleton_test';
 
 import Accueil from './accueil/accueil.js';
 import Articles from './articles/articles';
+import Calendriers from './calendriers/calendriers';
 
 
 
@@ -139,7 +140,7 @@ function HomePage() {
                     menu === 3 && <div> <Articles/> </div>
                 }
                 {
-                    menu === 4 && <div> <BasicTable/> </div>
+                    menu === 4 && <div> <Calendriers/> </div>
                 }
                 {
                     menu === 5 && <div> <SkeletonTest/> </div>
