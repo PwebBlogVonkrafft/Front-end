@@ -4,33 +4,31 @@ import { useState } from "react";
 import Typography from '@mui/material/Typography';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import EventCard from "./EventCard";
-// import ArticleFocus from "./ArticleFocus";
-// import ArticleCardEditable from "./ArticleCardEditable";
-// import ArticleEdit from "./ArticleEdit";
+import EventCardEditable from './EventCardEditable';
+import EventEdit from './EventEdit';
+import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "../styles/styles.js";
 
 // Import const
 import { dateList } from "../accueil/bdd/data.js";
-import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "../styles/styles.js";
 
 function Calendriers() {
   // La construction de la page Calendriers est fortement basé sur la page Article
 
   const [editMode, setEditMode] = useState(false)
-  const [focus, setFocus] = useState(-1);
   const [edit, setEdit] = useState(-1);
 
   const [render, forceRender] = useState(false);
 
-  // TODO These two handlers only change the newsList object.
+  // TODO These two handlers only change the dateList object.
   // Manipulation of database still needs to be implemented with axios
-  // const handleStoreArticle = (element) => {
-  //   newsList[newsList.findIndex(article => article.id === element.id)] = element;
-  // };
+  const handleStoreEvent = (element) => {
+    dateList[dateList.findIndex(article => article.id === element.id)] = element;
+  };
 
-  // const handleDeleteArticle = (element) => {
-  //   newsList.splice(newsList.findIndex(article => article.id === element.id), 1);
-  //   forceRender(!render);
-  // };
+  const handleDeleteEvent = (element) => {
+    dateList.splice(dateList.findIndex(article => article.id === element.id), 1);
+    forceRender(!render);
+  };
 
   return (
     <StyledBox>
@@ -50,20 +48,30 @@ function Calendriers() {
 
         {
           // VUE D'ENSEMBLE
-          editMode === false && focus === -1 && edit === -1 &&
+          editMode === false && edit === -1 &&
           <Grid item container spacing={2}>
-            {dateList.map(article => (
+            {dateList.map(event => (
               <Grid item xs={12}>
-                <EventCard element={article} onClickShow={setFocus} />
+                <EventCard element={event} />
               </Grid>
             )).reverse()}
           </Grid>
         }
 
-        {/* {
+        {
+          // {
+          //   id: "0",
+          //   date: "8 mars 2022", // just take time stamp of last change. Not modifiable by user.
+          //   name: "Concert du 10 mars",
+          //   date_concert: "10 mars 2022",
+          //   lieu: "Chez toi",
+          //   article: "https://www.nova.fr/news/sautoproduire-pour-se-lancer-loin-de-la-route-de-lor-123592-20-01-2021/?fbclid=IwAR3z41B-hapLamYeNSnF5wAbkT_hrUYpFkIbQxzugpSU3yulgH8Ydq-IqiI",
+          //   liens_facebook: "https://www.facebook.com/DVKrafft/",
+          // }
+
           // EDIT MODE - VUE D'ENSEMBLE
           // TODO Afficher edit mode seulement pour Admin
-          editMode === true && focus === -1 && edit === -1 && 
+          editMode === true && edit === -1 &&
           <Grid item container spacing={2}>
             <Grid item xs={12}>
               <StyledButton
@@ -71,37 +79,28 @@ function Calendriers() {
                 startIcon={<AddBoxIcon />}
                 sx={{ background: "grey" }}
                 onClick={() => {
-                  var newArticle = {
-                    id: newsList.length,
+                  var newEvent = {
+                    id: String(dateList.length), // TODO here and in article !!!
                     date: "",
                     name: "",
-                    corpus: "",
-                    image: null,
-                    video: null,
-                    musique: null,
+                    date_concert: "",
+                    lieu: "",
+                    article: "",
+                    liens_facebook: "",
                   }
-                  newsList.push(newArticle)
-                  setEdit(newArticle.id)
+                  dateList.push(newEvent)
+                  setEdit(newEvent.id)
                 }}>
-                Ajouter article
+                Ajouter event
               </StyledButton>
             </Grid>
 
-            {newsList.map(article => (
+            {dateList.map(event => (
               <Grid item xs={12}>
-                <ArticleCardEditable element={article} onClickEdit={setEdit}
-                  onClickDelete={handleDeleteArticle} />
+                <EventCardEditable element={event} onClickEdit={setEdit}
+                  onClickDelete={handleDeleteEvent} />
               </Grid>
             )).reverse()}
-          </Grid>
-        }
-
-        {
-          // FOCUS ARTICLE
-          focus !== -1 &&
-          <Grid item>
-            <ArticleFocus element={newsList.find(article => article.id === focus)}
-              onClickRetour={() => setFocus(-1)} />
           </Grid>
         }
 
@@ -109,10 +108,10 @@ function Calendriers() {
           // EDIT ARTICLE
           edit !== -1 &&
           <Grid item>
-            <ArticleEdit element={newsList.find(article => article.id === edit)}
-              onClickRetour={() => setEdit(-1)} storeArticle={handleStoreArticle}/>
+            <EventEdit element={dateList.find(event => event.id === edit)}
+              onClickRetour={() => setEdit(-1)} storeEvent={handleStoreEvent} />
           </Grid>
-        } */}
+        }
 
       </Grid>
     </StyledBox>
