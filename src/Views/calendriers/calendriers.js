@@ -68,7 +68,7 @@ function Calendriers() {
                 sx={{ background: "grey" }}
                 onClick={() => {
                   var newEvent = {
-                    id: String(dateList.length), // TODO here and in article !!!
+                    id: String(dateList.length),
                     date: "",
                     name: "",
                     date_concert: "",
