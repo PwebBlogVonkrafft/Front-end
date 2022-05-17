@@ -1,7 +1,6 @@
 import { Grid } from '@material-ui/core';
 import * as React from 'react';
 import { useState } from "react";
-import Typography from '@mui/material/Typography';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import EventCard from "./EventCard";
 import EventCardEditable from './EventCardEditable';
@@ -45,7 +44,6 @@ function Calendriers() {
           />
         </Grid>
 
-
         {
           // VUE D'ENSEMBLE
           editMode === false && edit === -1 &&
@@ -59,16 +57,6 @@ function Calendriers() {
         }
 
         {
-          // {
-          //   id: "0",
-          //   date: "8 mars 2022", // just take time stamp of last change. Not modifiable by user.
-          //   name: "Concert du 10 mars",
-          //   date_concert: "10 mars 2022",
-          //   lieu: "Chez toi",
-          //   article: "https://www.nova.fr/news/sautoproduire-pour-se-lancer-loin-de-la-route-de-lor-123592-20-01-2021/?fbclid=IwAR3z41B-hapLamYeNSnF5wAbkT_hrUYpFkIbQxzugpSU3yulgH8Ydq-IqiI",
-          //   liens_facebook: "https://www.facebook.com/DVKrafft/",
-          // }
-
           // EDIT MODE - VUE D'ENSEMBLE
           // TODO Afficher edit mode seulement pour Admin
           editMode === true && edit === -1 &&
