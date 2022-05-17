@@ -12,9 +12,12 @@ function EventEdit({ element, onClickRetour, storeEvent }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    const d = new Date();
+
     setFormValues({
       ...formValues,
       [name]: value,
+      ["date"]: d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear(),
     });
   };
 

@@ -32,6 +32,7 @@ function EventCard({ element }) {
             startIcon={<NewspaperIcon />}
             variant="outlined"
             fullWidth
+            disabled={element.article === ""}
             onClick={(e) => {
               e.preventDefault();
               window.open(element.article, '_blank');
@@ -43,6 +44,7 @@ function EventCard({ element }) {
           <Button
             startIcon={<FacebookIcon />}
             variant="outlined"
+            disabled={element.liens_facebook === ""}
             fullWidth
             onClick={(e) => {
               e.preventDefault();

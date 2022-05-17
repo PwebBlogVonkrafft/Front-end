@@ -33,6 +33,7 @@ function EventCardEditable({ element, onClickEdit, onClickDelete }) {
           <Button
             startIcon={<NewspaperIcon />}
             variant="outlined"
+            disabled={element.article === ""}
             fullWidth
             onClick={(e) => {
               e.preventDefault();
@@ -45,6 +46,7 @@ function EventCardEditable({ element, onClickEdit, onClickDelete }) {
           <Button
             startIcon={<FacebookIcon />}
             variant="outlined"
+            disabled={element.liens_facebook === ""}
             fullWidth
             onClick={(e) => {
               e.preventDefault();
