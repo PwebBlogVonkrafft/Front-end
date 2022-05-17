@@ -85,7 +85,7 @@ function Articles() {
                 sx={{ background: "grey" }}
                 onClick={() => {
                   var newArticle = {
-                    id: newsList.length,
+                    id: String(newsList.length),
                     date: "",
                     name: "",
                     corpus: "",
