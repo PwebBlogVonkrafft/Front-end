@@ -37,7 +37,7 @@ function ArticleFocus({ element, onClickRetour }) {
             justifyContent: 'flex-end'
           }}>
             <StyledButton onClick={onClickRetour}>
-              Retour
+              Tous les articles
             </StyledButton>
           </CardActions>
         </Grid>

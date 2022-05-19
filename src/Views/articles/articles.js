@@ -14,7 +14,7 @@ import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from ".
 
 
 function Articles() {
-  let {idLast} = useParams();
+  let { idLast } = useParams();
   let navigate = useNavigate();
   //Lorsqu'un article est sélectionné, la route ne change pas
   useEffect(() => {
@@ -55,7 +55,10 @@ function Articles() {
   return (
     <StyledBox>
       <Grid container direction="column" spacing={1}>
-        <Grid item container justifyContent="flex-end">
+
+        {
+          focus == -1 && edit == -1 &&
+          <Grid item container justifyContent="flex-end">
           <StyledFormControlLabel
             control={
               <StyledSwitch
@@ -66,6 +69,7 @@ function Articles() {
             label="Modifier"
           />
         </Grid>
+        }
 
         {
           // VUE D'ENSEMBLE
@@ -73,7 +77,7 @@ function Articles() {
           <Grid item container spacing={2}>
             {newsList.map(article => (
               <Grid item xs={12}>
-                <ArticleCard element={article} onClickShow={setFocus} />
+                <ArticleCard element={article} onClickShow={() => navigate("/articles/" + article.id)} />
               </Grid>
             )).reverse()}
           </Grid>
@@ -82,7 +86,7 @@ function Articles() {
         {
           // EDIT MODE - VUE D'ENSEMBLE
           // TODO Afficher edit mode seulement pour Admin
-          editMode == true && focus == -1 && edit == -1 && 
+          editMode == true && focus == -1 && edit == -1 &&
           <Grid item container spacing={2}>
             <Grid item xs={12}>
               <StyledButton
@@ -91,7 +95,7 @@ function Articles() {
                 sx={{ background: "grey" }}
                 onClick={() => {
                   var newArticle = {
-                    id: newsList.length,
+                    id: String(newsList.length),
                     date: "",
                     name: "",
                     corpus: "",
@@ -120,7 +124,7 @@ function Articles() {
           focus != -1 &&
           <Grid item>
             <ArticleFocus element={newsList.find(article => article.id === focus)}
-              onClickRetour={() =>  navigate("/articles/-1")} />
+              onClickRetour={() => navigate("/articles/-1")} />
           </Grid>
         }
 
@@ -129,7 +133,7 @@ function Articles() {
           edit != -1 &&
           <Grid item>
             <ArticleEdit element={newsList.find(article => article.id === edit)}
-              onClickRetour={() => setEdit(-1)} storeArticle={handleStoreArticle}/>
+              onClickRetour={() => setEdit(-1)} storeArticle={handleStoreArticle} />
           </Grid>
         }
 
