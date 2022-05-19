@@ -32,7 +32,9 @@ function Calendriers() {
   return (
     <StyledBox>
       <Grid container direction="column" spacing={1}>
-        <Grid item container justifyContent="flex-end">
+
+        { edit === -1 &&
+          <Grid item container justifyContent="flex-end">
           <StyledFormControlLabel
             control={
               <StyledSwitch
@@ -43,6 +45,7 @@ function Calendriers() {
             label="Modifier"
           />
         </Grid>
+        }
 
         {
           // VUE D'ENSEMBLE
