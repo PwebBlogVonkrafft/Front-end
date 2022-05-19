@@ -6,9 +6,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { newsList } from "../accueil/bdd/data.js";
 import ArticleCard from "./ArticleCard";
 import ArticleCardEditable from "./ArticleCardEditable";
-import ArticleEdit from "./ArticleEdit";
 import ArticleFocus from "./ArticleFocus";
-import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "./styles.js";
+import ArticleEdit from "./ArticleEdit";
+
+// Import const
+import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "../styles/styles.js";
 
 
 function Articles() {
