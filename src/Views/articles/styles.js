@@ -40,16 +40,11 @@ export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
 
 export const StyledSwitch = styled(Switch)(({ theme }) => ({
     // backgroundColor: theme.palette.secondary.main,
-    // TODO set activated color to purple everywhere
-    // Doesn't work for some reason
+    // Setting activated color to purple everywhere doesn't work for some reason
 }));
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
     marginBottom: 20,
     // borderColor: theme.palette.secondary.main,
-    // TODO set border color when selected everywhere
+    // Setting border color when selected everywhere doesn't work for some reason
 }));
-
-// Grid responsiveness: xs, md, ...
-
-// CardMedia
