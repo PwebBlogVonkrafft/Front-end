@@ -6,8 +6,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentDate } from '../accueil/composants/dateToString.js';
-import { StyledButton, StyledCard } from "./styles.js";
-
+import { StyledCard, StyledButton } from "../styles/styles.js";
 
 function ArticleCard({ element, onClickShow }) {
   let navigate = useNavigate();

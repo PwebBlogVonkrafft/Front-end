@@ -9,7 +9,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import UploadIcon from '@mui/icons-material/Upload';
 import * as React from 'react';
 import { useState } from "react";
-import { StyledButton, StyledCard, StyledTextField } from "./styles.js";
+import { StyledButton, StyledCard, StyledTextField } from "../styles/styles.js";
 
 function ArticleEdit({ element, onClickRetour, storeArticle }) {
 

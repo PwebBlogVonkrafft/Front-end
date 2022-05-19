@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { getCurrentDate } from '../accueil/composants/dateToString.js';
-import { StyledButton, StyledCard } from "./styles.js";
+import { StyledCard, StyledButton } from "../styles/styles.js";
 
 function ArticleFocus({ element, onClickRetour }) {
   return (
