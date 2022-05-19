@@ -41,7 +41,7 @@ function ArticleCard({ element, onClickShow }) {
             <CardActions style={{
               justifyContent: 'flex-end'
             }}>
-              <StyledButton onClick={() => navigate("/articles/" + element.id)}>
+              <StyledButton onClick={onClickShow}>
                 Afficher l'article
               </StyledButton>
             </CardActions>

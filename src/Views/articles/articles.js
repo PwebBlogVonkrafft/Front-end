@@ -71,7 +71,7 @@ function Articles() {
           <Grid item container spacing={2}>
             {newsList.map(article => (
               <Grid item xs={12}>
-                <ArticleCard element={article} onClickShow={setFocus} />
+                <ArticleCard element={article} onClickShow={() => navigate("/articles/" + article.id)} />
               </Grid>
             )).reverse()}
           </Grid>
