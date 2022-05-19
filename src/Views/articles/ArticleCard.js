@@ -4,14 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getCurrentDate } from '../accueil/composants/dateToString.js';
 import { StyledButton, StyledCard } from "./styles.js";
 
 
 function ArticleCard({ element, onClickShow }) {
-  let navigate = useNavigate();
-
   return (
     <StyledCard sx={{ p: 2 }}>
       <Grid container direction="row" spacing={1}>
