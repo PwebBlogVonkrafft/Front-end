@@ -15,3 +15,5 @@ Pour commit :
 git add \*
 git commit -m "<message>"
 git push
+
+  ce repo est fait pour avoir un hébergement de notre site
