@@ -3,10 +3,12 @@ import AudioControls from "./AudioControls";
 import Backdrop from "./Backdrop";
 import tracks from "./tracks.js";
 import "./styles.css";
+import {musiqueList} from "../accueil/bdd/data.js";
+import {getCurrentDateMusique} from "../accueil/composants/dateToString";
 
 function Musiques() {
   return ( 
-    < AudioPlayer tracks={tracks}/>
+    < AudioPlayer tracks={musiqueList}/>
   );
 }
 
@@ -25,10 +27,10 @@ const AudioPlayer = ({ tracks }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Destructure for conciseness
-  const { title, artist, color, image, audioSrc } = tracks[trackIndex];
+  const { id, date, name, description, file_name, image_de_couverture } = tracks[trackIndex];
 
   // Refs
-  const audioRef = useRef(new Audio(audioSrc));
+  const audioRef = useRef(new Audio(file_name));
   const intervalRef = useRef();
   const isReady = useRef(false);
 
@@ -99,7 +101,7 @@ const AudioPlayer = ({ tracks }) => {
   useEffect(() => {
     audioRef.current.pause();
 
-    audioRef.current = new Audio(audioSrc);
+    audioRef.current = new Audio(file_name);
     setTrackProgress(audioRef.current.currentTime);
 
     if (isReady.current) {
@@ -132,11 +134,11 @@ const AudioPlayer = ({ tracks }) => {
         <div className="track-info">
           <img
             className="artwork"
-            src={image}
-            alt={`track artwork for ${title} by ${artist}`}
+            src={image_de_couverture}
+            alt={`track artwork for ${name} by Dorian Vonkraft`}
           />
-          <h2 className="title">{title}</h2>
-          <h3 className="artist">{artist}</h3>
+          <h2 className="title">{name}</h2>
+          <h3 className="artist">{getCurrentDateMusique(date)}</h3>
           <AudioControls
             isPlaying={isPlaying}
             onPrevClick={toPrevTrack}

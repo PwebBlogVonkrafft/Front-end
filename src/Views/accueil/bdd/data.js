@@ -8,8 +8,8 @@ import img_couverture_video_1 from "./images_de_couverture_videos/img_couverture
 
 
 
-const musique_0 = new Audio("./musique/musique_0.mp3");
-const musique_1 = new Audio("./musique/musique_1.mp3");
+import musique_0 from"./musiques/musique_0.mp3";
+import musique_1 from"./musiques/musique_1.mp3";
 
 const video_0 = {
   src: "./videos/video_0.mp4",
