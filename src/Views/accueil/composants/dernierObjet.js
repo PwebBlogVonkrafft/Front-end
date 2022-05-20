@@ -1,6 +1,6 @@
-import { Button } from '@mui/material';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { StyledButton } from '../../styles/styles';
 import { dateList, musiqueList, newsList, videoList } from "../bdd/data";
 import { DateGrid, DerniereNewsCard, MusiqueGrid, VideoGrid } from "./blocFonctionnel";
 
@@ -23,12 +23,12 @@ function News() {
       {
         newsList.filter(nouvelle => Date.parse(nouvelle.date) === max).map(nouvelle => <DerniereNewsCard news={nouvelle}/>) 
       }
-      <Button 
+      <StyledButton 
         color="inherit"
         onClick={handleMenuLastNews}
       >
         Lire l'article
-      </Button>
+      </StyledButton>
     </div>
   );
 }
@@ -50,12 +50,12 @@ function Day() {
       {
         dateList.filter(nouvelle => Date.parse(nouvelle.date) === max).map(nouvelle => <DateGrid dates={nouvelle}/>) 
       }
-      <Button 
+      <StyledButton 
         color="inherit"
         onClick={handleMenuLastDate}
       >
         Retrouver l'événement dans le calendrier
-      </Button>
+      </StyledButton>
     </div>
   );
 }
