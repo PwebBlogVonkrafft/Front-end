@@ -1,106 +1,160 @@
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import { Grid, Paper, Tab, Tabs } from '@mui/material';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import * as React from 'react';
-import { musiqueList } from "../accueil/bdd/data.js";
+import React, { useState, useEffect, useRef } from "react";
+import AudioControls from "./AudioControls";
+import Backdrop from "./Backdrop";
+import tracks from"./tracks.js";
+import "./styles.css";
 
-
-
-
-const Musique = ({musique}) => {
-
-  const theme = useTheme();
-
-  return (
-    <Paper
-    elevation={0}
-    sx={{
-      p: 5,
-      margin: 'auto',
-      maxWidth: 750,
-      flexGrow: 1,
-      backgroundColor: (theme) =>
-        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    }}
-    >
-      <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
-        <Card sx={{ display: 'flex' }}>
-          <Grid container spacing={2}>
-            <Grid item>
-                <CardContent sx={{ flex: '1 0 auto' }}>
-                  <Typography component="div" variant="h5">
-                    {musique.name}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Dorian VonKrafft
-                  </Typography>
-                </CardContent>
-                <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                  <IconButton aria-label="previous">
-                    {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-                  </IconButton>
-                  <IconButton aria-label="play/pause">
-                    <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                  </IconButton>
-                  <IconButton aria-label="next">
-                    {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-                  </IconButton>
-                </Box>
-              <CardMedia
-                component="img"
-                sx={{ width: 151 }}
-                image={musique.image_de_couverture}
-                alt={musique.name}
-              />
-            </Grid>
-          </Grid>
-        </Card>
-
-      </Box>
-    </Paper>
+function Musiques() {
+  return ( 
+    < AudioPlayer tracks={tracks}/>
   );
 }
 
-function Musiques() {
-  const musique_List = musiqueList.map(a => <Musique musique = {a} />);
-  const [value, setValue] = React.useState('one');
+export default Musiques;
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+
+
+/*
+ * Read the blog post here:
+ * https://letsbuildui.dev/articles/building-an-audio-player-with-react-hooks
+ */
+const AudioPlayer = ({ tracks }) => {
+  // State
+  const [trackIndex, setTrackIndex] = useState(0);
+  const [trackProgress, setTrackProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Destructure for conciseness
+  const { title, artist, color, image, audioSrc } = tracks[trackIndex];
+
+  // Refs
+  const audioRef = useRef(new Audio(audioSrc));
+  const intervalRef = useRef();
+  const isReady = useRef(false);
+
+  // Destructure for conciseness
+  const { duration } = audioRef.current;
+
+  const currentPercentage = duration
+    ? `${(trackProgress / duration) * 100}%`
+    : "0%";
+  const trackStyling = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))
+  `;
+
+  const startTimer = () => {
+    // Clear any timers already running
+    clearInterval(intervalRef.current);
+
+    intervalRef.current = setInterval(() => {
+      if (audioRef.current.ended) {
+        toNextTrack();
+      } else {
+        setTrackProgress(audioRef.current.currentTime);
+      }
+    }, [1000]);
   };
 
-  return ( 
-    
-      <Box>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          textColor="secondary"
-          indicatorColor="secondary"
-          aria-label="secondary tabs example"
-        >
-          <Tab value="one" label="Album 1" />
-          {/*
-          <Tab value="two" label="Album 2" />
-          <Tab value="three" label="Album 3" />
-          */}
-        </Tabs>
-        {musique_List}
-      </Box>
-    );
-}
+  const onScrub = (value) => {
+    // Clear any timers already running
+    clearInterval(intervalRef.current);
+    audioRef.current.currentTime = value;
+    setTrackProgress(audioRef.current.currentTime);
+  };
 
+  const onScrubEnd = () => {
+    // If not already playing, start
+    if (!isPlaying) {
+      setIsPlaying(true);
+    }
+    startTimer();
+  };
 
+  const toPrevTrack = () => {
+    if (trackIndex - 1 < 0) {
+      setTrackIndex(tracks.length - 1);
+    } else {
+      setTrackIndex(trackIndex - 1);
+    }
+  };
 
+  const toNextTrack = () => {
+    if (trackIndex < tracks.length - 1) {
+      setTrackIndex(trackIndex + 1);
+    } else {
+      setTrackIndex(0);
+    }
+  };
 
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+      startTimer();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
 
-export default Musiques;
+  // Handles cleanup and setup when changing tracks
+  useEffect(() => {
+    audioRef.current.pause();
+
+    audioRef.current = new Audio(audioSrc);
+    setTrackProgress(audioRef.current.currentTime);
+
+    if (isReady.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+      startTimer();
+    } else {
+      // Set the isReady ref as true for the next pass
+      isReady.current = true;
+    }
+  }, [trackIndex]);
+
+  useEffect(() => {
+    // Pause and clean up on unmount
+    return () => {
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  return (
+    <div className="audio-player">
+      <div className="track-info">
+        <img
+          className="artwork"
+          src={image}
+          alt={`track artwork for ${title} by ${artist}`}
+        />
+        <h2 className="title">{title}</h2>
+        <h3 className="artist">{artist}</h3>
+        <AudioControls
+          isPlaying={isPlaying}
+          onPrevClick={toPrevTrack}
+          onNextClick={toNextTrack}
+          onPlayPauseClick={setIsPlaying}
+        />
+        <input
+          type="range"
+          value={trackProgress}
+          step="1"
+          min="0"
+          max={duration ? duration : `${duration}`}
+          className="progress"
+          onChange={(e) => onScrub(e.target.value)}
+          onMouseUp={onScrubEnd}
+          onKeyUp={onScrubEnd}
+          style={{ background: trackStyling }}
+        />
+      </div>
+      <Backdrop
+        trackIndex={trackIndex}
+        activeColor={color}
+        isPlaying={isPlaying}
+      />
+    </div>
+  );
+};
 
