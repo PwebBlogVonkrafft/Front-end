@@ -1,9 +1,10 @@
 import { Box, Button, Grid } from '@material-ui/core';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { getCurrentDateConcert } from '../accueil/composants/dateToString.js';
 import { StyledCard } from "../styles/styles.js";
-import NewspaperIcon from '@mui/icons-material/Newspaper';
-import FacebookIcon from '@mui/icons-material/Facebook';
 
 
 function EventCard({ element }) {
@@ -19,7 +20,7 @@ function EventCard({ element }) {
         </Grid>
         <Grid ite xs={6} sm={2}>
           <Typography variant="h6" color="text.secondary">
-            {element.date_concert}
+            {getCurrentDateConcert(element)}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={3}>

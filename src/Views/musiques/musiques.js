@@ -88,8 +88,10 @@ function Musiques() {
           aria-label="secondary tabs example"
         >
           <Tab value="one" label="Album 1" />
+          {/*
           <Tab value="two" label="Album 2" />
           <Tab value="three" label="Album 3" />
+          */}
         </Tabs>
         {musique_List}
       </Box>

@@ -24,7 +24,7 @@ type:'video/mp4'
 const newsList = [
     {
       id: "0",
-      date: "2013-05-23T18:25:43.511Z",
+      date: "2022-05-23T18:25:43.511Z",
       name: "1 million d'abonnés sur Youtube",
       corpus: "Il fallait s'y attendre et, en effet, la chaîne a atteint un million d'abonnés.",
       image: image_0,
@@ -33,7 +33,7 @@ const newsList = [
     },
     {
       id: "1",
-      date: "2013-04-23T18:25:43.511Z",
+      date: "2022-04-23T18:25:43.511Z",
       name: "Super maxi concert",
       corpus: "Un grand succès, avec beaucoup de monde, de lumières et de musique, au nom de la passion.",
       image: image_1,
@@ -45,19 +45,19 @@ const newsList = [
   const dateList = [
     {
       id: "0",
-      date: "2013-04-23T18:25:43.511Z",
-      name: "Concert du 10 mars",
+      date: "2022-04-23T18:25:43.511Z",
+      name: "Concert de charité",
       date_concert: "2015-04-23T18:25:43.511Z",
-      lieu: "Chez toi",
+      lieu: "À la maison de la dance",
       article: "https://www.nova.fr/news/sautoproduire-pour-se-lancer-loin-de-la-route-de-lor-123592-20-01-2021/?fbclid=IwAR3z41B-hapLamYeNSnF5wAbkT_hrUYpFkIbQxzugpSU3yulgH8Ydq-IqiI",
       liens_facebook: "https://www.facebook.com/DVKrafft/",
     },
     {
       id: "1",
-      date: "2012-04-23T18:25:43.511Z",
-      name: "Concert pour Jessica",
-      date_concert: "2013-07-23T18:25:43.511Z",
-      lieu: "Chez moi",
+      date: "2023-04-23T18:25:43.511Z",
+      name: "Concert pour TC",
+      date_concert: "2023-07-23T18:25:43.511Z",
+      lieu: "Dans le Hall du département TC",
       article: "https://www.deezer.com/fr/album/162103962?fbclid=IwAR1S8inaOwRdkEExN06T7XkwIRfia14ZtCWxDTC5ALw2Gqyk02ldigWNLeU",
       liens_facebook: "https://www.facebook.com/DVKrafft/photos/?ref=page_internal",
     }
@@ -66,7 +66,7 @@ const newsList = [
   const videoList = [
     {
       id: "0",
-      date: "2013-10-23T18:25:43.511Z",
+      date: "2021-10-23T18:25:43.511Z",
       name: "SOLE - DORIAN VONKRAFFT (MUSIC VIDEO)",
       description: "Hello everyone, this is I, Dorian VonKrafft. I made a little music video for my latest record.",
       file_name: video_0,
@@ -74,7 +74,7 @@ const newsList = [
     },
     {
       id: "1",
-      date: "2013-08-23T18:25:43.511Z",
+      date: "2020-08-23T18:25:43.511Z",
       name: "[Live Looping] The answer by Dorian VonKrafft on Boss RC-300 (with lyrics !)",
       description: "The answer is the bonus track of my EP 'Muffled Frustrations'. Now that I played all the songs of Muffled Frustrations, I will play other creations along with improvisations and some covers. If you have any recommendations send me a message or comment on my videos ! ",
       file_name: video_0,
@@ -85,7 +85,7 @@ const newsList = [
   const musiqueList = [
     {
       id: "0",
-      date: "2013-05-23T18:25:43.511Z",
+      date: "2019-05-23T18:25:43.511Z",
       name: "[Live Looping] Iano by Dorian VonKrafft on Boss RC-300 (with lyrics !)",
       description: "Very proud to show you today my most precious song, the first one I ever recorded for my EP 'Muffled Frustrations'.",
       file_name: musique_0,
@@ -93,7 +93,7 @@ const newsList = [
     },
     {
       id: "1",
-      date: "2013-07-23T18:25:43.511Z",
+      date: "2018-07-23T18:25:43.511Z",
       name: "[Live Looping] Little improvisation on Boss RC-300 by Dorian VonKrafft",
       description: "In order to keep you waiting for the following live sessions of my album, here is a little video I did on one shot based on a chord progression you can hear on Stolen Dance by Milky Chance ! ",
       file_name: musique_1,
