@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "./AudioControls";
 import Backdrop from "./Backdrop";
-import tracks from"./tracks.js";
+import tracks from "./tracks.js";
 import "./styles.css";
 
 function Musiques() {
@@ -121,40 +121,51 @@ const AudioPlayer = ({ tracks }) => {
   }, []);
 
   return (
-    <div className="audio-player">
-      <div className="track-info">
-        <img
-          className="artwork"
-          src={image}
-          alt={`track artwork for ${title} by ${artist}`}
-        />
-        <h2 className="title">{title}</h2>
-        <h3 className="artist">{artist}</h3>
-        <AudioControls
-          isPlaying={isPlaying}
-          onPrevClick={toPrevTrack}
-          onNextClick={toNextTrack}
-          onPlayPauseClick={setIsPlaying}
-        />
-        <input
-          type="range"
-          value={trackProgress}
-          step="1"
-          min="0"
-          max={duration ? duration : `${duration}`}
-          className="progress"
-          onChange={(e) => onScrub(e.target.value)}
-          onMouseUp={onScrubEnd}
-          onKeyUp={onScrubEnd}
-          style={{ background: trackStyling }}
-        />
+    <div>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '10vh',
+      }}></div>
+      <div className="audio-player">
+        <div className="track-info">
+          <img
+            className="artwork"
+            src={image}
+            alt={`track artwork for ${title} by ${artist}`}
+          />
+          <h2 className="title">{title}</h2>
+          <h3 className="artist">{artist}</h3>
+          <AudioControls
+            isPlaying={isPlaying}
+            onPrevClick={toPrevTrack}
+            onNextClick={toNextTrack}
+            onPlayPauseClick={setIsPlaying}
+          />
+          <input
+            type="range"
+            value={trackProgress}
+            step="1"
+            min="0"
+            max={duration ? duration : `${duration}`}
+            className="progress"
+            onChange={(e) => onScrub(e.target.value)}
+            onMouseUp={onScrubEnd}
+            onKeyUp={onScrubEnd}
+            style={{ background: trackStyling }}
+          />
+        </div>
       </div>
-      <Backdrop
+    </div>
+
+
+  );
+};
+
+{/*      <Backdrop
         trackIndex={trackIndex}
         activeColor={color}
         isPlaying={isPlaying}
       />
-    </div>
-  );
-};
-
+    */}

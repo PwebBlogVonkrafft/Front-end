@@ -4,13 +4,12 @@ import * as React from 'react';
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import { newsList } from "../accueil/bdd/data.js";
-// Import const
-import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "../styles/styles.js";
 import ArticleCard from "./ArticleCard";
 import ArticleCardEditable from "./ArticleCardEditable";
 import ArticleEdit from "./ArticleEdit";
-import ArticleFocus from "./ArticleFocus";
 /* eslint eqeqeq: 0 */
+// Import const
+import { StyledBox, StyledButton, StyledFormControlLabel, StyledSwitch } from "../styles/styles.js";
 
 
 function Articles() {

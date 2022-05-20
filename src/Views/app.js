@@ -55,7 +55,7 @@ const App = () => {
     ]);
     //return routes;
     return (
-      showNav === true? <Admin funcNav={setShowNav}/> : routes
+      showNav === false? <Admin funcNav={setShowNav}/> : routes
     );
 }
 
