@@ -33,6 +33,7 @@ const messageM = 'Dernière musique';
 
 // Fonction principale renvoyant le résultat
 function Accueil() {
+
   return (    
     <Box sx={{ justifyContent: 'flex-end', flexGrow: 1, overflow: 'hidden', px: 3 }}> {/* La propriété CSS overflow est une propriété raccourcie qui définit comment gérer le dépassement du contenu d'un élément dans son bloc.  */}
       {

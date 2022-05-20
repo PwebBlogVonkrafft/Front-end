@@ -11,7 +11,7 @@ function HomePage() {
     //const [shouldRedirect, setShouldRedirect] = useState(true);
 
     const navigate = useNavigate();
-
+    
     //les handleChanges
     const handleMenu0 = () => {
         navigate("/");

@@ -1,19 +1,19 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import { Grid, Paper, Tab, Tabs } from '@mui/material';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
+import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-
-
-
+import * as React from 'react';
 import { musiqueList } from "../accueil/bdd/data.js";
-import { Grid, Paper, Tab, Tabs } from '@mui/material';
+
+
+
 
 const Musique = ({musique}) => {
 
