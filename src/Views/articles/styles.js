@@ -1,8 +1,8 @@
-import { Button, Card, Slider, Box } from '@material-ui/core';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
+import { Box, Button, Card, Slider } from '@material-ui/core';
 import { TextField } from '@mui/material';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { alpha, styled } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
 
 // Exemple
 export const SuccessSlider = styled(Slider)(({ theme }) => ({

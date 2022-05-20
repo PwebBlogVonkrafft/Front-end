@@ -1,7 +1,7 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+//import FavoriteIcon from "@mui/icons-material/Favorite";
 import SendIcon from "@mui/icons-material/Send";
-import ShareIcon from "@mui/icons-material/Share";
+//import ShareIcon from "@mui/icons-material/Share";
 import Avatar from '@mui/material/Avatar';
 import Button from "@mui/material/Button";
 import ButtonBase from '@mui/material/ButtonBase';
@@ -89,12 +89,14 @@ const DerniereNewsCard = ({news}) => {
         <CardActions disableSpacing>
           {" "}
           {/* Mettre l'icone à droite */}
+          {/*
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon />
           </IconButton>
+          */}
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

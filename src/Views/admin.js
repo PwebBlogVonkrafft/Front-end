@@ -2,6 +2,7 @@ import { Button, List, ListItem } from "@material-ui/core";
 import { purple } from "@mui/material/colors";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+/* eslint eqeqeq: 0 */
 
 export default function Admin(props) {
   const navigate = useNavigate();
