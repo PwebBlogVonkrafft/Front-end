@@ -63,11 +63,23 @@ function Day() {
 // Fonction pour obtenir la dernière vidéo depuis data.js
 function Video() {
   const max = Math.max(...videoList.map(o => Date.parse(o.date)), 0);  // Pour avoir la date maximale
+  let navigate = useNavigate();
+
+  const  handleMenuLastVideo = () => {
+    navigate('/videos');
+  };
+
   return(
     <div>
       {
         videoList.filter(nouvelle => Date.parse(nouvelle.date) === max).map(nouvelle => <VideoGrid videos={nouvelle}/>) 
       }
+      <StyledButton 
+        color="inherit"
+        onClick={handleMenuLastVideo}
+        >
+        Regardez-la maintenant
+      </StyledButton>
     </div>
   );
 }
@@ -75,11 +87,23 @@ function Video() {
 // Fonction pour obtenir la dernière musique depuis data.js
 function Musique() {
   const max = Math.max(...musiqueList.map(o => Date.parse(o.date)), 0);  // Pour avoir la date maximale
+  let navigate = useNavigate();
+
+  const  handleMenuLastMusique = () => {
+    navigate('/musiques');
+  };
+
   return(
     <div>
       {
         musiqueList.filter(nouvelle => Date.parse(nouvelle.date) === max).map(nouvelle => <MusiqueGrid musiques={nouvelle}/>) 
       }
+      <StyledButton 
+        color="inherit"
+        onClick={handleMenuLastMusique}
+        >
+        Écoutez-la maintenant
+      </StyledButton>
     </div>
   );
 }

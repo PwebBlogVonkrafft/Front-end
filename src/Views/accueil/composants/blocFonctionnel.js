@@ -227,15 +227,6 @@ const DerniereNewsCard = ({news}) => {
                   {videos.description}
                 </Typography>
               </Grid>
-              <Grid item>
-                <Typography sx={{ cursor: 'pointer'}} color="common.white" variant="body2">
-                  <Stack direction="row" spacing={2}>
-                    <Button color="secondary" variant="contained" endIcon={<SendIcon />}>
-                      Regardez-la maintenant
-                    </Button>
-                  </Stack>
-                </Typography>
-              </Grid>
             </Grid>
             <Grid item>
               <Typography variant="subtitle1" component="div">
@@ -285,15 +276,6 @@ const DerniereNewsCard = ({news}) => {
                 />
                 <Typography variant="body2" color="text.secondary">
                   {musiques.description}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography sx={{ cursor: 'pointer'}} color="common.white" variant="body2">
-                  <Stack direction="row" spacing={2}>
-                    <Button color="secondary" variant="contained" endIcon={<SendIcon />}>
-                      Écoutez-la maintenant
-                    </Button>
-                  </Stack>
                 </Typography>
               </Grid>
             </Grid>
